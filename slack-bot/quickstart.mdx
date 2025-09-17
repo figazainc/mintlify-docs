@@ -1,0 +1,329 @@
+---
+title: "Quickstart"
+description: "Get your Slack Priorities Bot up and running in minutes"
+---
+
+## Overview
+
+The Slack Priorities Bot helps organizations manage and track alignment with company priorities through interactive Slack commands and polling features. This guide will walk you through setting up the bot in your Slack workspace and deploying it to production.
+
+<Note>
+This bot uses **Socket Mode** for real-time communication with Slack, which means no webhooks or public URLs are required for development and testing.
+</Note>
+
+## Prerequisites
+
+Before you begin, ensure you have:
+
+- A Slack workspace where you can install apps
+- Docker installed on your system
+- A PostgreSQL database (for production deployment)
+- Basic familiarity with Slack app management
+
+## Step 1: Create Your Slack App
+
+<Steps>
+<Step title="Create app from manifest">
+1. Go to [https://api.slack.com/apps](https://api.slack.com/apps)
+2. Click **"Create New App"**
+3. Choose **"From an app manifest"**
+4. Select your workspace
+5. Copy and paste the following manifest content into the manifest editor:
+
+```json
+{
+    "display_information": {
+        "name": "Objectives bot"
+    },
+    "features": {
+        "app_home": {
+            "home_tab_enabled": true,
+            "messages_tab_enabled": true,
+            "messages_tab_read_only_enabled": false
+        },
+        "bot_user": {
+            "display_name": "Objectives bot",
+            "always_online": false
+        },
+        "slash_commands": [
+            {
+                "command": "/help",
+                "description": "get help",
+                "should_escape": false
+            },
+            {
+                "command": "/objectives",
+                "description": "List all Objectives in the company",
+                "should_escape": false
+            },
+            {
+                "command": "/add-objective",
+                "description": "Adds a new Objective",
+                "should_escape": false
+            },
+            {
+                "command": "/delete-objective",
+                "description": "Deletes an objective",
+                "should_escape": false
+            },
+            {
+                "command": "/create-alignment-poll",
+                "description": "Creates an alignment poll ",
+                "should_escape": false
+            },
+            {
+                "command": "/see-poll-results",
+                "description": "Shows the results of the polls",
+                "should_escape": false
+            },
+            {
+                "command": "/manage-admins",
+                "description": "Manages Priorities Bot admins",
+                "should_escape": false
+            }
+        ]
+    },
+    "oauth_config": {
+        "scopes": {
+            "bot": [
+                "channels:read",
+                "chat:write",
+                "commands",
+                "files:read",
+                "files:write",
+                "im:history",
+                "im:read",
+                "im:write",
+                "users:read"
+            ]
+        }
+    },
+    "settings": {
+        "event_subscriptions": {
+            "bot_events": [
+                "app_home_opened"
+            ]
+        },
+        "interactivity": {
+            "is_enabled": true
+        },
+        "org_deploy_enabled": false,
+        "socket_mode_enabled": true,
+        "token_rotation_enabled": false
+    }
+}
+```
+
+6. Click **"Next"**
+7. Review the configuration and click **"Create"**
+
+<Check>
+The manifest includes all required slash commands, scopes, and Socket Mode configuration automatically.
+</Check>
+</Step>
+
+<Step title="Generate App-Level Token for Socket Mode">
+1. In your app settings, navigate to **"Socket Mode"**
+2. Verify that **"Enable Socket Mode"** is already enabled (from the manifest)
+3. Generate an App-Level Token:
+   - Click **"Generate Token and Scopes"**
+   - Token Name: `socket-mode-token`
+   - Add scope: `connections:write`
+   - Click **"Generate"**
+4. Copy the App-Level Token (starts with `xapp-`)
+
+<Check>
+Socket Mode allows real-time WebSocket communication without needing public webhooks.
+</Check>
+</Step>
+
+<Step title="Install app to workspace">
+1. Go to **"Install App"** in your app settings
+2. Click **"Install to Workspace"**
+3. Review and allow the requested permissions
+4. Copy the **"Bot User OAuth Token"** (starts with `xoxb-`)
+
+<Warning>
+Keep your tokens secure and never commit them to version control.
+</Warning>
+</Step>
+</Steps>
+
+## Step 2: Deploy the Bot
+
+<Steps>
+<Step title="Configure environment variables">
+Create a `.env` file with your configuration:
+
+```bash
+# Slack Configuration
+SLACK_BOT_TOKEN=xoxb-your-bot-token-here
+SLACK_APP_TOKEN=xapp-your-app-token-here
+
+# Database Configuration (for production)
+DATABASE_URL=postgresql://username:password@host:port/database
+
+# Application Configuration
+FLASK_ENV=production
+LOG_LEVEL=INFO
+```
+
+<Warning>
+Replace the placeholder values with your actual tokens and database credentials.
+</Warning>
+</Step>
+
+<Step title="Pull the Docker image">
+```bash
+docker pull ghcr.io/potables/slack-priorities-bot:latest
+```
+
+<Check>
+The image should download successfully from GitHub Container Registry.
+</Check>
+</Step>
+
+<Step title="Run the container">
+```bash
+docker run -d \
+  --name slack-priorities-bot \
+  --env-file .env \
+  --restart unless-stopped \
+  ghcr.io/potables/slack-priorities-bot:latest
+```
+
+<Info>
+The `--restart unless-stopped` flag ensures the container restarts automatically if it crashes.
+</Info>
+</Step>
+</Steps>
+
+## Step 3: Test Your Installation
+
+<Steps>
+<Step title="Verify bot is running">
+Check the container logs to ensure the bot connected successfully:
+
+```bash
+docker logs slack-priorities-bot
+```
+
+You should see output similar to:
+```
+✅ Socket Mode connection established
+✅ Bot is ready and listening for events
+```
+
+<Check>
+If you see connection errors, verify your tokens are correct and Socket Mode is enabled.
+</Check>
+</Step>
+
+<Step title="Add bot to a Slack channel">
+1. In your Slack workspace, go to any channel
+2. Type `/invite @Priorities Bot` (or your bot's name)
+3. The bot should appear in the channel member list
+
+<Info>
+The bot needs to be added to channels to respond to commands in those channels.
+</Info>
+</Step>
+
+<Step title="Test the slash commands">
+The bot includes several slash commands. Test them in a channel where the bot is present:
+
+**Basic commands:**
+- `/help` - Display bot help information
+- `/objectives` - List all company objectives
+
+**Admin commands (require admin permissions):**
+- `/add-objective` - Add a new objective
+- `/delete-objective` - Delete an objective
+- `/create-alignment-poll` - Create an alignment poll
+- `/see-poll-results` - View poll results
+- `/manage-admins` - Manage bot administrators
+
+<Check>
+Start with `/help` to verify basic functionality, then test other commands as needed.
+</Check>
+</Step>
+
+<Step title="Test bot permissions">
+Try these additional tests:
+- Mention the bot with `@Priorities Bot hello`
+- Send a direct message to the bot
+- Test in different channel types (public, private, DM)
+
+<Warning>
+If the bot doesn't respond to mentions or DMs, check that you've added the required scopes during setup.
+</Warning>
+</Step>
+</Steps>
+
+## Troubleshooting
+
+<AccordionGroup>
+<Accordion title="Bot not responding to commands">
+**Common causes:**
+- Bot not added to the channel
+- Incorrect slash command configuration
+- Socket Mode connection issues
+- Missing required scopes
+
+**Solutions:**
+1. Verify the bot is in the channel: `/invite @YourBotName`
+2. Check container logs: `docker logs slack-priorities-bot`
+3. Ensure all required scopes are added in Slack app settings
+4. Verify your tokens are correct and not expired
+</Accordion>
+
+<Accordion title="Socket Mode connection failures">
+**Common causes:**
+- Invalid App-Level Token
+- Missing `connections:write` scope
+- Network connectivity issues
+
+**Solutions:**
+1. Verify your `SLACK_APP_TOKEN` starts with `xapp-`
+2. Check that Socket Mode is enabled in your Slack app
+3. Ensure the app has the `connections:write` scope
+4. Test network connectivity to `wss://wss-primary.slack.com`
+</Accordion>
+
+<Accordion title="Database connection errors">
+**Common causes:**
+- Invalid `DATABASE_URL` format
+- Database server not accessible
+- Missing database permissions
+
+**Solutions:**
+1. Verify your `DATABASE_URL` follows the format: `postgresql://user:pass@host:port/db`
+2. Test database connectivity from your deployment environment
+3. Ensure the database user has proper permissions
+4. Check that the database server is running and accessible
+</Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+<Card title="Configure Priorities" icon="list-check" href="/configuration">
+Set up organizational priorities and objectives for your team.
+</Card>
+
+<Card title="Set Up Polling" icon="chart-bar" href="/polling">
+Configure alignment polling to track team progress.
+</Card>
+
+<Card title="Admin Management" icon="user-shield" href="/admin">
+Manage bot administrators and permissions.
+</Card>
+
+<Card title="API Reference" icon="code" href="/api">
+Explore the bot's API endpoints and webhooks.
+</Card>
+</CardGroup>
+
+<Note>
+**Need help?** Check our [troubleshooting guide](/troubleshooting) or contact support for assistance.
+</Note>
