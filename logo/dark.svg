@@ -27,8 +27,8 @@
   <path d="M38 5 L40 5 M40 9 L42 9 M42 13 L44 13 M38 17 L40 17" stroke="url(#executionGradient)" stroke-width="1" stroke-linecap="round"/>
 </g>
 
-<!-- Product Name: "StratExec AI" -->
-<text x="50" y="16" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#FAFAFA">StratExec AI</text>
+<!-- Product Name: "Figaza" -->
+<text x="50" y="16" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#FAFAFA">Figaza</text>
 
 <!-- Tagline -->
 <text x="50" y="20" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="400" fill="#9F9FA9" opacity="0.8">Strategy to Execution</text>

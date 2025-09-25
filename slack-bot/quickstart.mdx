@@ -123,14 +123,14 @@ The manifest includes all required slash commands, scopes, and Socket Mode confi
 </Step>
 
 <Step title="Generate App-Level Token for Socket Mode">
-1. In your app settings, navigate to **"Socket Mode"**
-2. Verify that **"Enable Socket Mode"** is already enabled (from the manifest)
-3. Generate an App-Level Token:
-   - Click **"Generate Token and Scopes"**
+1. In your app settings, navigate to **"Basic Information"**
+2. Scroll down to the **"App-Level Tokens"** section
+3. Click **"Generate Token and Scopes"**
+4. Configure the token:
    - Token Name: `socket-mode-token`
    - Add scope: `connections:write`
    - Click **"Generate"**
-4. Copy the App-Level Token (starts with `xapp-`)
+5. Copy the App-Level Token (starts with `xapp-`)
 
 <Check>
 Socket Mode allows real-time WebSocket communication without needing public webhooks.
@@ -183,17 +183,31 @@ The image should download successfully from GitHub Container Registry.
 </Check>
 </Step>
 
-<Step title="Run the container">
+<Step title="Create persistent volume and run container">
+First, create a named volume for data persistence:
+
+```bash
+docker volume create slack-bot-data
+```
+
+Then run the container with the persistent volume:
+
 ```bash
 docker run -d \
   --name slack-priorities-bot \
   --env-file .env \
   --restart unless-stopped \
+  -v slack-bot-data:/var/lib/postgresql/data \
   ghcr.io/potables/slack-priorities-bot:latest
 ```
 
+<Warning>
+**Critical**: Always use the `-v slack-bot-data:/var/lib/postgresql/data` volume mount to ensure your database data persists across container updates and restarts.
+</Warning>
+
 <Info>
-The `--restart unless-stopped` flag ensures the container restarts automatically if it crashes.
+- The `--restart unless-stopped` flag ensures the container restarts automatically if it crashes
+- The volume mount preserves PostgreSQL data when upgrading to new versions
 </Info>
 </Step>
 </Steps>
@@ -302,7 +316,68 @@ If the bot doesn't respond to mentions or DMs, check that you've added the requi
 3. Ensure the database user has proper permissions
 4. Check that the database server is running and accessible
 </Accordion>
+
+<Accordion title="Data loss or missing data after container restart">
+**Common causes:**
+- Missing volume mount in Docker run command
+- Using bind mounts instead of named volumes
+- Accidentally deleting the Docker volume
+
+**Solutions:**
+1. **Always use named volumes**: Ensure your Docker run command includes `-v slack-bot-data:/var/lib/postgresql/data`
+2. **Verify volume exists**: Check with `docker volume ls | grep slack-bot-data`
+3. **Check volume mount**: Inspect container with `docker inspect slack-priorities-bot | grep -A 10 "Mounts"`
+4. **Never delete volumes**: The data volume should persist across container upgrades
+
+<Warning>
+If you run the container without the volume mount, you'll lose all your data when the container is removed.
+</Warning>
+</Accordion>
 </AccordionGroup>
+
+## Upgrading to New Versions
+
+When new versions of the Slack Priorities Bot are released, you can safely upgrade while preserving your data:
+
+<Steps>
+<Step title="Stop current container">
+```bash
+docker stop slack-priorities-bot
+```
+</Step>
+
+<Step title="Pull latest image">
+```bash
+docker pull ghcr.io/potables/slack-priorities-bot:latest
+```
+</Step>
+
+<Step title="Remove old container and start new one">
+```bash
+# Remove old container (data is safe in the volume)
+docker rm slack-priorities-bot
+
+# Start new container with same volume
+docker run -d \
+  --name slack-priorities-bot \
+  --env-file .env \
+  --restart unless-stopped \
+  -v slack-bot-data:/var/lib/postgresql/data \
+  ghcr.io/potables/slack-priorities-bot:latest
+```
+</Step>
+
+<Step title="Verify upgrade">
+```bash
+# Check logs to ensure successful startup
+docker logs -f slack-priorities-bot
+```
+</Step>
+</Steps>
+
+<Check>
+Your PostgreSQL data is preserved in the `slack-bot-data` volume throughout the upgrade process.
+</Check>
 
 ## Next Steps
 
