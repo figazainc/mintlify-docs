@@ -1,54 +1,7 @@
-<svg width="177" height="24" viewBox="0 0 177 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<!-- Strategy Icon - Abstract geometric shapes representing planning -->
-<g>
-  <rect x="2" y="6" width="8" height="8" rx="1" fill="url(#strategyGradient)" opacity="0.9"/>
-  <rect x="4" y="4" width="4" height="4" rx="0.5" fill="url(#strategyGradient)"/>
-  <rect x="6" y="2" width="2" height="2" rx="0.25" fill="url(#strategyGradient)"/>
-</g>
-
-<!-- Connection Arrow -->
-<path d="M12 10 L18 10 M16 8 L18 10 L16 12" stroke="url(#connectionGradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-
-<!-- AI Brain/Neural Network Icon -->
-<g>
-  <circle cx="22" cy="8" r="2" fill="url(#aiGradient)"/>
-  <circle cx="26" cy="12" r="1.5" fill="url(#aiGradient)"/>
-  <circle cx="20" cy="14" r="1.5" fill="url(#aiGradient)"/>
-  <circle cx="24" cy="16" r="1" fill="url(#aiGradient)"/>
-  <path d="M22 6 L26 10 M22 10 L26 12 M22 12 L20 14 M26 10 L24 16" stroke="url(#aiGradient)" stroke-width="0.8" opacity="0.6"/>
-</g>
-
-<!-- Execution Icon - Flow/Process representation -->
-<g>
-  <rect x="32" y="4" width="6" height="2" rx="1" fill="url(#executionGradient)"/>
-  <rect x="32" y="8" width="8" height="2" rx="1" fill="url(#executionGradient)"/>
-  <rect x="32" y="12" width="10" height="2" rx="1" fill="url(#executionGradient)"/>
-  <rect x="32" y="16" width="6" height="2" rx="1" fill="url(#executionGradient)"/>
-  <path d="M38 5 L40 5 M40 9 L42 9 M42 13 L44 13 M38 17 L40 17" stroke="url(#executionGradient)" stroke-width="1" stroke-linecap="round"/>
-</g>
-
-<!-- Product Name: "Figaza" -->
-<text x="50" y="16" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#09090B">Figaza</text>
-
-<!-- Tagline -->
-<text x="50" y="20" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="400" fill="#52525C" opacity="0.8">Strategy to Execution</text>
-
-<defs>
-  <linearGradient id="strategyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" stop-color="#3B82F6"/>
-    <stop offset="100%" stop-color="#1E40AF"/>
-  </linearGradient>
-  <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-    <stop offset="0%" stop-color="#8B5CF6"/>
-    <stop offset="100%" stop-color="#A855F7"/>
-  </linearGradient>
-  <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" stop-color="#10B981"/>
-    <stop offset="100%" stop-color="#059669"/>
-  </linearGradient>
-  <linearGradient id="executionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" stop-color="#F59E0B"/>
-    <stop offset="100%" stop-color="#D97706"/>
-  </linearGradient>
-</defs>
+<svg width="1340" height="1340" viewBox="0 0 1340 1340" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1340" height="1340" fill="#1E1E1E"/>
+<rect width="1340" height="1340" fill="#18466C"/>
+<rect x="318" y="154" width="218" height="1031" fill="#FFFEFE"/>
+<rect x="596" y="154" width="426" height="197" fill="#FFFEFE"/>
+<rect x="596" y="563" width="279" height="196" fill="#FFFEFE"/>
 </svg>
