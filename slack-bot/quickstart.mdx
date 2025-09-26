@@ -175,7 +175,7 @@ Replace the placeholder values with your actual tokens and database credentials.
 
 <Step title="Pull the Docker image">
 ```bash
-docker pull ghcr.io/potables/slack-priorities-bot:latest
+docker pull ghcr.io/figazainc/slack-priorities-bot:latest
 ```
 
 <Check>
@@ -198,7 +198,7 @@ docker run -d \
   --env-file .env \
   --restart unless-stopped \
   -v slack-bot-data:/var/lib/postgresql/data \
-  ghcr.io/potables/slack-priorities-bot:latest
+  ghcr.io/figazainc/slack-priorities-bot:latest
 ```
 
 <Warning>
@@ -348,7 +348,7 @@ docker stop slack-priorities-bot
 
 <Step title="Pull latest image">
 ```bash
-docker pull ghcr.io/potables/slack-priorities-bot:latest
+docker pull ghcr.io/figazainc/slack-priorities-bot:latest
 ```
 </Step>
 
@@ -363,7 +363,7 @@ docker run -d \
   --env-file .env \
   --restart unless-stopped \
   -v slack-bot-data:/var/lib/postgresql/data \
-  ghcr.io/potables/slack-priorities-bot:latest
+  ghcr.io/figazainc/slack-priorities-bot:latest
 ```
 </Step>
 
