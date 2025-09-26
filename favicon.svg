@@ -1,35 +1,7 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<!-- Strategy Icon - Simplified geometric shapes -->
-<g>
-  <rect x="2" y="8" width="6" height="6" rx="1" fill="url(#strategyGradient)"/>
-  <rect x="3" y="6" width="4" height="4" rx="0.5" fill="url(#strategyGradient)"/>
-  <rect x="4" y="4" width="2" height="2" rx="0.25" fill="url(#strategyGradient)"/>
-</g>
-
-<!-- Connection Arrow -->
-<path d="M10 11 L14 11 M12 9 L14 11 L12 13" stroke="url(#connectionGradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-
-<!-- AI Neural Network Icon -->
-<g>
-  <circle cx="16" cy="8" r="1.5" fill="url(#aiGradient)"/>
-  <circle cx="18" cy="12" r="1" fill="url(#aiGradient)"/>
-  <circle cx="15" cy="14" r="1" fill="url(#aiGradient)"/>
-  <circle cx="17" cy="16" r="0.8" fill="url(#aiGradient)"/>
-  <path d="M16 6.5 L18 10 M16 9.5 L18 12 M16 12.5 L15 14 M18 10 L17 16" stroke="url(#aiGradient)" stroke-width="0.6" opacity="0.7"/>
-</g>
-
-<defs>
-  <linearGradient id="strategyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" stop-color="#3B82F6"/>
-    <stop offset="100%" stop-color="#1E40AF"/>
-  </linearGradient>
-  <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-    <stop offset="0%" stop-color="#8B5CF6"/>
-    <stop offset="100%" stop-color="#A855F7"/>
-  </linearGradient>
-  <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" stop-color="#10B981"/>
-    <stop offset="100%" stop-color="#059669"/>
-  </linearGradient>
-</defs>
+<svg width="1340" height="1340" viewBox="0 0 1340 1340" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1340" height="1340" fill="#1E1E1E"/>
+<rect width="1340" height="1340" fill="#18466C"/>
+<rect x="318" y="154" width="218" height="1031" fill="#FFFEFE"/>
+<rect x="596" y="154" width="426" height="197" fill="#FFFEFE"/>
+<rect x="596" y="563" width="279" height="196" fill="#FFFEFE"/>
 </svg>
