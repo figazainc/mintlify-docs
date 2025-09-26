@@ -41,7 +41,7 @@
     "primary": {
       "type": "button",
       "label": "Get Started",
-      "href": "https://potables.mintlify.app/quickstart"
+      "href": "https://figaza.mintlify.app/quickstart"
     }
   },
   "contextual": {
