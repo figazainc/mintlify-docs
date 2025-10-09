@@ -5,7 +5,7 @@ description: "Get your Slack Priorities Bot up and running in minutes"
 
 ## Overview
 
-The Slack Priorities Bot helps organizations manage and track alignment with company priorities through interactive Slack commands and polling features. This guide will walk you through setting up the bot in your Slack workspace and deploying it to production.
+The **Objectives Bot** helps organizations manage and track alignment with company priorities through interactive Slack commands and polling features. This bot enables teams to create, view, and manage organizational objectives while measuring alignment through polling campaigns. This guide will walk you through setting up the bot in your Slack workspace and deploying it to production.
 
 <Note>
 This bot uses **Socket Mode** for real-time communication with Slack, which means no webhooks or public URLs are required for development and testing.
@@ -28,12 +28,12 @@ Before you begin, ensure you have:
 2. Click **"Create New App"**
 3. Choose **"From an app manifest"**
 4. Select your workspace
-5. Copy and paste the following manifest content into the manifest editor:
+5. Copy and paste the following manifest content into the manifest editor as JSON:
 
 ```json
 {
     "display_information": {
-        "name": "Objectives bot"
+        "name": "Objectives Bot"
     },
     "features": {
         "app_home": {
@@ -42,43 +42,28 @@ Before you begin, ensure you have:
             "messages_tab_read_only_enabled": false
         },
         "bot_user": {
-            "display_name": "Objectives bot",
+            "display_name": "Objectives Bot",
             "always_online": false
         },
         "slash_commands": [
             {
-                "command": "/help",
-                "description": "get help",
+                "command": "/objectives-help",
+                "description": "Get help and view available commands",
                 "should_escape": false
             },
             {
                 "command": "/objectives",
-                "description": "List all Objectives in the company",
+                "description": "View all company objectives with filtering and pagination",
                 "should_escape": false
             },
             {
-                "command": "/add-objective",
-                "description": "Adds a new Objective",
+                "command": "/objectives-polls",
+                "description": "Create alignment polls and view results (admin only)",
                 "should_escape": false
             },
             {
-                "command": "/delete-objective",
-                "description": "Deletes an objective",
-                "should_escape": false
-            },
-            {
-                "command": "/create-alignment-poll",
-                "description": "Creates an alignment poll ",
-                "should_escape": false
-            },
-            {
-                "command": "/see-poll-results",
-                "description": "Shows the results of the polls",
-                "should_escape": false
-            },
-            {
-                "command": "/manage-admins",
-                "description": "Manages Priorities Bot admins",
+                "command": "/objectives-admins",
+                "description": "Manage bot administrators (admin only)",
                 "should_escape": false
             }
         ]
@@ -130,7 +115,7 @@ The manifest includes all required slash commands, scopes, and Socket Mode confi
    - Token Name: `socket-mode-token`
    - Add scope: `connections:write`
    - Click **"Generate"**
-5. Copy the App-Level Token (starts with `xapp-`)
+5. Save the App-Level Token (starts with `xapp-`), you'll need it later.
 
 <Check>
 Socket Mode allows real-time WebSocket communication without needing public webhooks.
@@ -141,7 +126,7 @@ Socket Mode allows real-time WebSocket communication without needing public webh
 1. Go to **"Install App"** in your app settings
 2. Click **"Install to Workspace"**
 3. Review and allow the requested permissions
-4. Copy the **"Bot User OAuth Token"** (starts with `xoxb-`)
+4. Save the **"Bot User OAuth Token"** (starts with `xoxb-`), you also will need it later.
 
 <Warning>
 Keep your tokens secure and never commit them to version control.
@@ -160,7 +145,7 @@ Create a `.env` file with your configuration:
 SLACK_BOT_TOKEN=xoxb-your-bot-token-here
 SLACK_APP_TOKEN=xapp-your-app-token-here
 
-# Database Configuration (for production)
+# Database Configuration
 DATABASE_URL=postgresql://username:password@host:port/database
 
 # Application Configuration
@@ -235,7 +220,7 @@ If you see connection errors, verify your tokens are correct and Socket Mode is 
 
 <Step title="Add bot to a Slack channel">
 1. In your Slack workspace, go to any channel
-2. Type `/invite @Priorities Bot` (or your bot's name)
+2. Type `/invite @Objectives Bot` (or your bot's name)
 3. The bot should appear in the channel member list
 
 <Info>
@@ -247,26 +232,31 @@ The bot needs to be added to channels to respond to commands in those channels.
 The bot includes several slash commands. Test them in a channel where the bot is present:
 
 **Basic commands:**
-- `/help` - Display bot help information
-- `/objectives` - List all company objectives
+- `/objectives-help` - Display bot help information and available commands
+- `/objectives` - View all company objectives with interactive filtering, sorting, and pagination
 
 **Admin commands (require admin permissions):**
-- `/add-objective` - Add a new objective
-- `/delete-objective` - Delete an objective
-- `/create-alignment-poll` - Create an alignment poll
-- `/see-poll-results` - View poll results
-- `/manage-admins` - Manage bot administrators
+- `/objectives-polls` - Create alignment poll campaigns and view poll results with detailed analytics
+- `/objectives-admins` - Manage bot administrators and permissions
+
+**Interactive features:**
+- **App Home Tab** - View objectives, manage your work, and access admin features
+- **CRUD Operations** - Create, read, update, and delete objectives through interactive modals
+- **Filtering & Sorting** - Filter objectives by tags, status, and other criteria
+- **Alignment Polling** - Create campaigns to measure team alignment with company priorities
+- **CSV Export** - Export poll results and objective data for analysis
 
 <Check>
-Start with `/help` to verify basic functionality, then test other commands as needed.
+Start with `/objectives-help` to verify basic functionality, then test `/objectives` to view the interactive objective list.
 </Check>
 </Step>
 
 <Step title="Test bot permissions">
 Try these additional tests:
-- Mention the bot with `@Priorities Bot hello`
-- Send a direct message to the bot
-- Test in different channel types (public, private, DM)
+- Mention the bot with `@Objectives Bot hello`
+- Visit the bot's **Home tab** to access the full interface
+- Test objective creation and management through interactive modals
+- Create a test alignment poll campaign (admin only)
 
 <Warning>
 If the bot doesn't respond to mentions or DMs, check that you've added the required scopes during setup.
@@ -285,7 +275,7 @@ If the bot doesn't respond to mentions or DMs, check that you've added the requi
 - Missing required scopes
 
 **Solutions:**
-1. Verify the bot is in the channel: `/invite @YourBotName`
+1. Verify the bot is in the channel: `/invite @Objectives Bot`
 2. Check container logs: `docker logs slack-priorities-bot`
 3. Ensure all required scopes are added in Slack app settings
 4. Verify your tokens are correct and not expired
