@@ -1,0 +1,171 @@
+---
+title: "Creating Poll Campaigns"
+description: "Learn how to create alignment polls to measure team engagement with company objectives"
+---
+
+## Overview
+
+Poll campaigns allow you to measure how aligned your team members are with specific company objectives. As an admin, you can create campaigns that send consolidated polls to selected users, channels, or groups, then view detailed results and analytics.
+
+<Note>
+Only bot administrators can create poll campaigns. Users will receive polls and can respond, but cannot create new campaigns.
+</Note>
+
+## Prerequisites
+
+Before creating poll campaigns, ensure you have:
+
+- Bot administrator permissions
+- At least one objective added to the system
+- Recipients (users, channels, or user groups) selected for polling
+
+## Creating a Poll Campaign
+
+<Steps>
+<Step title="Start the poll creation process">
+In any channel where the bot is present, use the poll command:
+
+```
+/objectives-polls
+```
+
+This will show you existing campaigns and provide a **"Create New Poll Campaign"** button.
+</Step>
+
+<Step title="Configure your campaign">
+Click **"Create New Poll Campaign"** to open the campaign creation modal. Fill out:
+
+**Campaign Title**
+- Enter a descriptive title (e.g., "Q4 Engineering Goals", "Marketing Priorities Survey")
+- This title will be visible to all poll recipients
+
+**Select Objectives**
+- Choose one or more objectives from the dropdown
+- These are the company goals that recipients will rate their alignment with
+- You can select multiple objectives for a single campaign
+
+**Choose Recipients**
+- Select who should receive the poll:
+  - **Individual users**: Select specific team members
+  - **Channels**: Send to entire channels (bot must be added to the channel first)
+  - **User groups**: Send the poll to all users in the user group
+
+<Warning>
+The bot must be added to any channels you want to poll. If a channel isn't accessible, you'll get an error with instructions to add the bot first.
+</Warning>
+</Step>
+
+<Step title="Review and create">
+After filling out all fields, click **"Create Polls"**. The bot will:
+
+1. Validate your selections
+2. Create the campaign in the database
+3. Send poll messages to all selected recipients
+4. Show you a confirmation with campaign details
+
+<Check>
+You'll see a success message with the campaign ID and recipient count once creation is complete.
+</Check>
+</Step>
+</Steps>
+
+## How Recipients Receive Polls
+
+When you create a campaign, recipients will receive:
+
+- **Single message per person**: Each recipient gets one consolidated message, not individual messages per objective
+- **"Open Poll" button**: Recipients click this button to access the poll
+
+Recipients can:
+- **See full objective details**: Each objective is displayed with its title and description to provide complete context
+- **Rate each objective independently**:
+  - **N/A - Not Applicable**: Use when the objective doesn't apply to your role or work
+  - **1 - Strongly Disagree**: Complete misalignment with the objective
+  - **2 - Disagree**: General misalignment with the objective
+  - **3 - Neutral**: Neither agree nor disagree
+  - **4 - Agree**: General alignment with the objective
+  - **5 - Strongly Agree**: Complete alignment with the objective
+- Save responses for individual objectives (responses are saved automatically)
+- Submit all responses when complete
+- Return to modify their responses anytime
+
+## Viewing Poll Results
+
+<Steps>
+<Step title="Access campaign results">
+Use the same command to view results:
+
+```
+/objectives-polls
+```
+
+This shows all your campaigns with a dropdown to select which one to view.
+</Step>
+
+<Step title="Select a campaign">
+Choose a campaign from the dropdown to see:
+- **Response summary**: How many people have responded
+- **Progress visualization**: Charts showing alignment scores
+- **Detailed breakdown**: Results per objective
+- **Response analytics**: Distribution of ratings
+</Step>
+
+<Step title="Export data (optional)">
+Click the **"Export CSV"** button to download detailed results including:
+- Individual responses per user and objective
+- Aggregate statistics
+- Campaign metadata
+
+The CSV file will be sent to your direct messages with the Bot.
+</Step>
+</Steps>
+
+## Troubleshooting
+
+<AccordionGroup>
+<Accordion title="Cannot create campaigns">
+**Common causes:**
+- Not an admin user
+- No objectives exist in the system
+- Missing required permissions
+
+**Solutions:**
+- Ask an existing admin to add you as an administrator
+- Create objectives first using the bot interface
+- Verify bot installation and permissions
+</Accordion>
+
+<Accordion title="Recipients not receiving polls">
+**Common causes:**
+- Bot not added to selected channels
+- Invalid user selections
+- Network/delivery issues
+
+**Solutions:**
+- Add bot to channels: `/invite @Objectives Bot`
+- Verify user group membership
+- Check bot logs for delivery errors
+</Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+After creating your first poll campaign:
+
+<CardGroup cols={2}>
+<Card title="Monitor Results" icon="chart-line">
+Regular check response rates and alignment scores to track engagement.
+</Card>
+
+<Card title="Export Data" icon="download">
+Download CSV files for detailed analysis and reporting.
+</Card>
+
+<Card title="Plan Follow-ups" icon="calendar">
+Schedule regular alignment polls to track progress over time.
+</Card>
+
+<Card title="Manage Admins" icon="user-shield">
+Add other administrators to help manage polling campaigns.
+</Card>
+</CardGroup>

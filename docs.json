@@ -22,7 +22,8 @@
           {
             "group": "Slack bot",
             "pages": [
-              "slack-bot/quickstart"
+              "slack-bot/quickstart",
+              "slack-bot/creating-polls"
             ]
           }
         ]
