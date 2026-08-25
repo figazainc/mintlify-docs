@@ -3,7 +3,7 @@ title: "Reviewing AI changes"
 description: "How proposed edits work, and how to accept or reject them."
 ---
 
-When the assistant changes a document, it proposes the change rather than making it. You decide what lands.
+When the assistant changes a document, the change goes into the document straight away and is held for your review. You decide whether it stays.
 
 ## The review flow
 
@@ -19,9 +19,27 @@ When the assistant changes a document, it proposes the change rather than making
   </Step>
 </Steps>
 
-Nothing is written into the saved document until you accept it. Rejecting leaves the document exactly as it was.
+## What accept and reject actually do
 
-The exception is **YOLO mode** in **Settings → AI**, which accepts every AI change automatically and skips this step — including for background agents and skills you are not watching. Your [version history](/projects/versions) still covers you, but undoing means restoring a version rather than clicking **Reject**.
+Worth being precise about, because it affects what happens if you leave a review unfinished:
+
+- The assistant's text is **written into the document immediately**. What you are reading is the new version, marked up against the last version you approved.
+- **Accept** approves that text and moves your approved version forward.
+- **Reject** restores the document from the last version you approved, discarding the change.
+
+So a pending change is really in your document until you resolve it — it is not sitting in a staging area waiting for permission. If you leave a review unfinished and come back tomorrow, the document contains the assistant's text, still flagged for review.
+
+<Tip>
+  Resolve a review before you export, publish, or hand a document to someone. Anything that reads the document reads what is in it now, including changes you have not accepted yet.
+</Tip>
+
+**YOLO mode** in **Settings → AI** skips the review step altogether and accepts every AI change as it arrives — including changes from background agents and skills you are not watching.
+
+## What review does not cover
+
+Slide decks and dashboard documents have no inline review. When the assistant writes to one, the change lands directly and there is nothing to accept or reject.
+
+[Version history](/projects/versions) is your undo for those — worth saving a version before you set the assistant loose on a deck you care about.
 
 ## Before every proposal, a clean point
 
