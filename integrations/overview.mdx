@@ -1,0 +1,82 @@
+---
+title: "Integrations overview"
+description: "Autonomous data pipelines that pull data from your other tools into a project, built for you by the assistant."
+---
+
+An integration is a scheduled data pipeline. It calls an external tool's API on a schedule, stores what comes back in your project, and makes it available to you and to the assistant.
+
+There is no list of connectors to browse. You describe the pipeline you want in chat, and the assistant works out how to talk to the service, collects any credential, sets the integration up, and checks that it works.
+
+<Columns cols={2}>
+  <Card title="Set one up" icon="wand-magic-sparkles" href="/integrations/setup-integration">
+    The `/setup-integration` skill, step by step.
+  </Card>
+  <Card title="Publish to Drive and Notion" icon="cloud-arrow-up" href="/integrations/publish">
+    Push a document out and keep the published copy current.
+  </Card>
+  <Card title="MCP servers" icon="server" href="/integrations/mcp-servers">
+    Give agents tools that reach outside Figaza.
+  </Card>
+</Columns>
+
+## Integrations, sources, and MCP
+
+Three things bring outside material into Figaza, and they are worth telling apart:
+
+| | What it does | When it runs |
+| --- | --- | --- |
+| [**Sources**](/sources/quickstart) | You import a document from Notion, Drive, or your filesystem | Once, when you import |
+| **Integrations** | Figaza fetches data from a service and stores it in the project | On a schedule you set |
+| [**Publishing**](/integrations/publish) | Figaza pushes one of your documents out to Drive or Notion | When you publish, then on every new version |
+| [**MCP servers**](/integrations/mcp-servers) | Agents gain tools that reach an external system | When an agent decides to call one |
+
+Read the middle two as a pair: an integration brings data *in* and refreshes it; publishing sends a document *out* and keeps it current. An MCP server is different again — reach for it when you want the assistant to be able to *act* against another system during a conversation.
+
+## What you decide
+
+An integration comes down to four choices, all of which the assistant walks you through:
+
+| Choice | Example |
+| --- | --- |
+| **Which service** | Linear, Jira, GitHub, PostHog |
+| **Which data** | Open issues on the Mobile team, updated this week |
+| **How often** | Every hour, once a day, or only when you ask |
+| **A name** | What it is called in Sources and Settings |
+
+If the service needs a credential, you provide it once — see [Stored credentials](#stored-credentials).
+
+## Where the data goes
+
+Each run saves what came back into your project, and it appears in the **Sources** panel under the integration's name.
+
+From there the assistant can read it like any other project content — which is the point. Once your Linear issues are in the project, *"what have we shipped against this initiative?"* becomes a question the assistant can actually answer.
+
+## Managing integrations
+
+Integrations are listed in **Settings → Integrations** and in the **Sources** panel in the sidebar. Each shows its **Last run** time and its number of **Runs**.
+
+| Action | What it does |
+| --- | --- |
+| **Run now** | Fetches immediately, outside the schedule |
+| **Pause** / **Resume** | Stops and restarts scheduled runs without losing the setup |
+| **Delete integration** | Removes it permanently |
+
+An integration that has not fetched anything yet shows **No data yet**; one that has never run shows **Never** as its last run. A **Manual** badge means it has no schedule and only runs when you ask.
+
+Integrations are per-project, so the Integrations tab needs a project open.
+
+## Stored credentials
+
+**Settings → Integrations** also holds **Stored credentials** — the API keys and tokens your integrations use.
+
+Values are never displayed, not even to you. You can **Replace value** or **Delete credential**, and that is the whole surface.
+
+Credentials are stored per service, so you enter a Linear token once no matter how many Linear pipelines you build. Deleting a credential breaks every integration that depends on it.
+
+## What is not supported
+
+Services that use a *Sign in with…* authorisation flow, common for Google and Salesforce, cannot be set up this way. They need a purpose-built connection, and the assistant tells you so rather than trying and failing.
+
+For those, use the built-in [Notion](/sources/notion) and [Google Drive](/sources/google-drive) connections.
+
+Services that authenticate with an API key or token are what this works for, which covers most developer-facing tools.

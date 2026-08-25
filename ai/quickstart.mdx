@@ -1,0 +1,75 @@
+---
+title: "Quickstart: your first AI conversation"
+description: "Ask the assistant about your project, have it draft a section, and review every change before it lands."
+---
+
+The assistant in Figaza is not a chat window that happens to sit next to your documents. It reads your project, works with tools you can see, and proposes changes you approve one at a time.
+
+This quickstart takes about five minutes.
+
+## Prerequisites
+
+- A project with at least one document in it — see [Create a project](/projects/create-a-project)
+- Remaining AI credit on your account
+
+## 1. Ask something that requires reading the project
+
+Open the chat panel on the right. Make sure the mode selector reads **Agent**, and ask:
+
+```text
+What does this project already say about our target users, and what is missing?
+```
+
+As the assistant works, tool cards appear in the transcript — **Read**, **Explore**, **Searched for**, and so on. Each card names the document or query involved, so you can see exactly what the answer is based on.
+
+<Tip>
+  Type `@` in the composer to point the assistant at a specific document instead of letting it search.
+</Tip>
+
+## 2. Ask it to draft something
+
+```text
+Draft a "Success metrics" section for feature-brief.md, based on the personas document.
+```
+
+The assistant proposes an edit rather than making one. In the editor you get a **Pending AI changes** banner, and every change is marked inline.
+
+## 3. Review the change
+
+Work through the proposal:
+
+- **Accept** or **Reject** each individual change
+- **Accept all** or **Reject all** to decide the whole proposal at once
+
+The assistant's text is already in the document — **Reject** puts back the last version you approved. See [Reviewing AI changes](/ai/reviewing-changes).
+
+## 4. Plan before you build
+
+Switch the mode selector to **Plan** and ask:
+
+```text
+We want to add usage-based pricing. What should I work through first?
+```
+
+In **Plan** mode the assistant cannot edit your documents. It can only read the project and propose a workstream plan — so you get thinking, not edits. Switch back to **Agent** when you are ready to write.
+
+## 5. Hand off something long
+
+If the answer is going to take a while — research, a sweep across many documents — ask for it as a background task, or create one from the **Agents** section of the sidebar. It runs on its own while you carry on. See [Background agents](/ai/background-agents).
+
+## What to try next
+
+<Columns cols={2}>
+  <Card title="Chat in depth" icon="comments" href="/ai/chat">
+    Modes, models, the message queue, voice, and chat history.
+  </Card>
+  <Card title="Reviewing AI changes" icon="code-compare" href="/ai/reviewing-changes">
+    How proposals work, and how to decide change by change.
+  </Card>
+  <Card title="Derive documents" icon="wand-magic-sparkles" href="/derive/quickstart">
+    Turn a brief into a PRD or an elevator pitch.
+  </Card>
+  <Card title="AI credit and models" icon="gauge" href="/ai/credit-and-models">
+    How credit is consumed and how to pick a model.
+  </Card>
+</Columns>

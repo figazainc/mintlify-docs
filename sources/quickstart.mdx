@@ -1,0 +1,62 @@
+---
+title: "Quickstart: bring your content in"
+description: "Connect Notion and Google Drive, import local files, and get everything into one project."
+---
+
+Your material is scattered: some in Notion, some in Drive, some in a folder on your laptop. Sources bring it into one project so the assistant can read all of it at once.
+
+## Prerequisites
+
+- A project open in Figaza
+- Accounts for whichever of Notion and Google Drive you want to connect
+
+## 1. Open the Sources section
+
+**Sources** sits in the sidebar. It has a section for each place content can come from: **Local Files**, **Notion**, **Google Drive**, and any data integrations you have set up.
+
+## 2. Import from your computer
+
+Choose **Import files** to pick individual files, or **Import folder** for a directory. You can also drag files onto the window — a **Drop files to import** target appears.
+
+See [Local files](/sources/local-files).
+
+## 3. Connect Notion
+
+Choose **Connect Notion** and authorise Figaza in your browser, selecting which pages it may access.
+
+Once connected, browse or search your pages and choose one to import. See [Notion](/sources/notion).
+
+## 4. Connect Google Drive
+
+Choose **Connect Google Drive** and authorise in your browser. Browse your Drive and open a file to import it.
+
+Google Docs, Markdown, and plain text import. Other file types are refused with an explicit error rather than importing something unusable. See [Google Drive](/sources/google-drive).
+
+## 5. Search across everything
+
+The search box at the top of the window searches **Project files**, **Notion**, and **Google Drive** together, so you can find something without remembering where it lives. See [Search](/sources/search).
+
+## 6. Ask for a live integration
+
+For tools with no built-in connector — Linear, Jira, GitHub, and so on — ask the assistant in chat:
+
+```text
+Set up an integration that pulls our open Linear issues into this project every morning.
+```
+
+It researches the API, collects any credential securely, installs the integration, and runs it. See [The /setup-integration skill](/integrations/setup-integration).
+
+## One rule worth knowing
+
+Importing copies content into your project. It is not a live link back to the original.
+
+From then on, the project's copy is the one you edit, and the assistant works on it without any risk of touching your Notion workspace or your Drive. When you want to push work back out, that is [publishing](/integrations/publish) — a separate, deliberate action.
+
+## Where to next
+
+<Columns cols={2}>
+  <Card title="Local files" icon="folder" href="/sources/local-files" />
+  <Card title="Notion" icon="n" href="/sources/notion" />
+  <Card title="Google Drive" icon="google-drive" href="/sources/google-drive" />
+  <Card title="Integrations" icon="plug" href="/integrations/overview" />
+</Columns>

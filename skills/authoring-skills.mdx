@@ -1,0 +1,103 @@
+---
+title: "Authoring skills"
+description: "Parameters, scope, document context, and tool access — the four things that make a skill reliable."
+---
+
+A skill is a prompt plus a set of constraints. The prompt says what to do; the constraints decide what it is allowed to see and touch.
+
+## The basics
+
+| Field | Notes |
+| --- | --- |
+| **Name** | How the skill appears in menus |
+| **Alias** | What you type after `/`. Using a built-in skill's alias overrides that skill |
+| **Prompt (markdown)** | The instructions. Markdown, and it can contain parameters |
+| **Runnable by human** | Whether it appears in your slash menu |
+| **Allow agents to use this skill** | Whether the assistant may call it during a longer task |
+
+Name and prompt are both required.
+
+## Parameters
+
+Use **Insert** in the prompt editor to add a parameter.
+
+### System parameters
+
+Filled in automatically when the skill runs:
+
+- **Open document** — the document you currently have open
+- **Today's date**
+- **Current date and time**
+
+### User parameters
+
+Collected from whoever runs the skill:
+
+| Type | Syntax | Input |
+| --- | --- | --- |
+| Text | `{{name:text}}` | Single-line text |
+| Multiline | `{{name:multiline}}` | Multi-line text |
+| Number | `{{name:number}}` | A numeric value |
+| Date | `{{name:date}}` | `YYYY-MM-DD` |
+| Date & time | `{{name:datetime}}` | `YYYY-MM-DDTHH:mm` |
+| Choice | `{{name:choice:a\|b\|c}}` | One of the listed options |
+| Document | `{{name:document}}` | A project document, resolved as a Markdown link |
+
+Values are validated before the skill runs, so a skill cannot start with a malformed date or an option that is not on the list.
+
+### Preview
+
+The **Preview** panel renders the prompt with sample values, so you see what the assistant actually receives. If the parameter syntax is wrong, the preview says so instead of guessing.
+
+## Scope
+
+| Scope | Where the skill is available |
+| --- | --- |
+| **All projects** | Everywhere on this device |
+| **This project** | The current project only — and it travels with the project if you sync it |
+| **Just for me** | Personal to you |
+
+A personal skill takes precedence over a project skill with the same alias, and is marked **Overrides shared**. That is how you adapt a team skill to your own way of working without changing it for everyone.
+
+Project-scoped skills need an active project — Figaza will tell you to select one.
+
+## Data context
+
+**Data context** decides which documents the skill can see:
+
+- **All project** — the whole project
+- **Selected documents** — only the files and folders you pick
+
+Selecting a folder includes what is inside it; you can then uncheck individual items to exclude them. At least one file or folder must be selected.
+
+Narrow context is usually better. A skill that reviews pricing documents works better, and costs less, when it is not reading your entire project first.
+
+## Skill access
+
+**Skill access** decides which tools the skill may use:
+
+- **Read-only** — it can read and analyse, and cannot change anything
+- **Selected tools** — you pick exactly what it may do
+
+The tool picker is grouped:
+
+| Category | Examples |
+| --- | --- |
+| **Project search** | List project directory, read project document, find project documents, search project files |
+| **Plan management** | Get and propose workstream plans, set item status, propose plan links |
+| **File editing** | Replace project document, patch project document, rename document |
+| **Web** | Fetch URL, web search |
+| **Background tasks** | Create background task |
+| **Integrations** | List, save, trigger, and test integrations and their data files |
+
+<Warning>
+  A skill can only ever do what its tool selection allows. If you do not grant a File editing tool, the skill cannot write to your documents no matter what its prompt says — and that is the point. Start read-only and add write access deliberately.
+</Warning>
+
+## Skills agents can call
+
+Turning on **Allow agents to use this skill** lets the chat assistant invoke it during a longer piece of work, filling in the user parameters itself.
+
+The skill still runs with exactly the document context and tools you configured. Letting agents call it does not widen its access.
+
+Give agent-invokable skills clear, self-contained prompts. Unlike you, an agent calling a skill cannot ask a clarifying question first.

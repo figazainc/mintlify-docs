@@ -1,0 +1,40 @@
+---
+title: "Built-in skills"
+description: "The skills Figaza ships with, and how to customise or replace them."
+---
+
+Figaza ships with a set of skills that power features you already use. They appear under **Built-in skills** in **Settings → Skills**, marked with a **Built-in** badge.
+
+## What ships
+
+| Skill | Alias | What it does |
+| --- | --- | --- |
+| **Explore project** | `explore-project` | Read-only exploration: surveys the project, finds and reads relevant documents, and returns a cited summary. It has no write access at all. |
+| **Onboarding research** | `onboarding-research` | Researches a company from public sources and produces the company overview, personas, and competitor analysis. Runs when you [create a project with research](/projects/create-a-project). |
+| **Derive PRD** | `derive-prd` | Produces a PRD for engineers from a source document. See [Derived documents](/derive/derived-documents). |
+| **Derive elevator pitch** | `derive-elevator-pitch` | Produces an elevator pitch for executives, as a document or a slide deck. |
+| **Project briefing** | `project-briefing` | Synthesises the whole project into a briefing. See [Project briefing](/derive/project-briefing). |
+| **Setup integration** | `setup-integration` | Walks you through connecting an external tool and collecting its credential. See [The /setup-integration skill](/integrations/setup-integration). |
+| **Install integration** | `install-integration` | Tests, installs, and verifies the integration. Called by the setup skill rather than by you — see [The /setup-integration skill](/integrations/setup-integration). |
+
+Two of them are deliberately one-sided: **Setup integration** is for you to run and agents cannot invoke it, and **Install integration** is for agents and does not appear in your slash menu.
+
+## Running one yourself
+
+The rest are available in the chat composer under `/`, the same as your own skills. Running `/project-briefing` directly is equivalent to using the briefing dialog.
+
+## Customising a built-in skill
+
+Choose **Customize** on a built-in skill. You get an editable copy — with the same alias — saved at whichever scope you choose. Your version is what runs from then on.
+
+Everything is editable: the prompt, the document context, and which tools the skill may use.
+
+To go back to the shipped behaviour, delete your customised version. The hint in the editor says as much: *Delete your customized version to restore the built-in default.*
+
+## When to customise
+
+The built-in derive skills are a good example. If your organisation's PRDs need a specific section — a compliance review, a rollout plan, a link to your tracker — customise **Derive PRD** once and every PRD you derive from then on includes it.
+
+<Tip>
+  Customise at **This project** scope when the change is specific to one product's conventions, and at **All projects** scope when it reflects how you work everywhere.
+</Tip>

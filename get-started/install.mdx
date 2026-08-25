@@ -1,0 +1,70 @@
+---
+title: "Install and sign in"
+description: "Download the Figaza desktop app, sign in with Google, and confirm your AI credit is active."
+---
+
+Figaza is a desktop application. There is no browser version — the app stores your projects on your own machine and talks to AI providers from your device.
+
+## Prerequisites
+
+- A macOS, Windows, or Linux computer
+- A Google account to sign in with
+- An internet connection for sign-in, AI responses, and any connected sources
+
+## 1. Download the app
+
+Go to [figaza.com](https://figaza.com) and use the download link for your operating system.
+
+Install it the way you install any other app on your platform: drag it to Applications on macOS, run the installer on Windows, or use the package for your Linux distribution.
+
+## 2. Sign in
+
+<Steps>
+  <Step title="Open Figaza">
+    You land on the sign-in screen with a single **Sign in with Figaza** button.
+  </Step>
+  <Step title="Authenticate in your browser">
+    Figaza opens your default browser to complete sign-in. Your identity is federated to Google — Figaza never sees or stores a password.
+
+    While you finish in the browser, the app shows **Waiting for browser…**.
+  </Step>
+  <Step title="Return to the app">
+    Once you approve, the browser hands the session back to the desktop app automatically and you are signed in.
+  </Step>
+</Steps>
+
+<Note>
+  If the browser completes but the app stays on **Waiting for browser…**, close the browser tab and press **Sign in with Figaza** again. The app listens on a local port for the hand-back, and a blocked or non-default browser can interrupt it.
+</Note>
+
+## 3. Check your plan
+
+New personal accounts start with a one-time AI credit grant — $5.00 by default — so you can try the assistant before subscribing. When that credit is spent, AI features stop until you subscribe.
+
+If your company holds a team subscription, your membership entitles you automatically and you will not be asked to pay.
+
+Open **Settings → Account** at any time to see your current plan. See [Plans and billing](/settings/plans-and-billing) for how credit is allocated and what happens when it runs out.
+
+## 4. Create your first project
+
+You are ready to go. Continue with the [quickstart](/get-started/quickstart).
+
+## Staying up to date
+
+Figaza updates itself. When a new version is available you get an **Update Available** prompt with **Update Now** and **Later**.
+
+Occasionally a version stops being supported. In that case the app shows **Update Required** and you must install the latest version to continue. See [Updates and feedback](/settings/updates-and-feedback).
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Sign-in says the session expired">
+    Sign out from the user menu in the bottom-left corner, then sign in again. If the app reports that the session cannot be renewed, a full sign-out and sign-in is required rather than a retry.
+  </Accordion>
+  <Accordion title="A subscription is required to use Figaza">
+    Your personal account has no active plan and no remaining free credit. Choose **Subscribe** to open checkout, or contact whoever manages your company's subscription.
+  </Accordion>
+  <Accordion title="Your company's subscription is inactive">
+    The app shows the company name and asks you to contact support. Billing for company plans is managed centrally — an individual member cannot reactivate it from the app.
+  </Accordion>
+</AccordionGroup>

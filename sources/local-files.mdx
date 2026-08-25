@@ -1,0 +1,42 @@
+---
+title: "Local files"
+description: "Import files and folders from your computer into a project."
+---
+
+The **Local Files** section of **Sources** brings content from your own machine into the current project.
+
+## Import
+
+| Action | What it does |
+| --- | --- |
+| **Import files** | Pick individual files |
+| **Import folder** | Pick a directory and import the supported files in it |
+| Drag and drop | Drop files onto the window — a **Drop files to import** target appears |
+
+Figaza reports how many files were imported. If nothing in the selection was supported, it says so — **No supported files found in folder** — rather than importing a partial mess.
+
+## Import is a copy
+
+Imported files are copied into the project. The original on your disk is untouched, and later edits to the original do not flow into the project.
+
+This is deliberate. It means the assistant can propose changes to any document in your project without any possibility of modifying files elsewhere on your computer.
+
+If a source file changes and you want the new version, import it again.
+
+## Importing at project creation
+
+You can also start a project from a folder rather than importing into an existing one — see [Create a project](/projects/create-a-project). That path copies the folder's contents in as the project's initial documents.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Open or create a managed project to import local files">
+    Imports need an active project. Create or open one first.
+  </Accordion>
+  <Accordion title="No supported files could be imported">
+    None of the files you selected are types Figaza can store as documents. Text and Markdown files are the reliable case.
+  </Accordion>
+  <Accordion title="Import failed. Try again.">
+    Retry the import. If it keeps failing on one file, try importing it on its own to identify which file is the problem.
+  </Accordion>
+</AccordionGroup>

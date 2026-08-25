@@ -1,0 +1,65 @@
+---
+title: "Remote sync"
+description: "Sync a project's full history to a Git remote you control, and work on it from more than one device."
+---
+
+Remote sync pushes a project's complete history to a Git repository you own, so you can pick the same project up on another machine — or share it with a colleague who also uses Figaza.
+
+You do not need to know Git to use it. You need a repository URL and an access token.
+
+<Note>
+  If **Settings** has no **Sync** tab, remote sync is not available in your version of Figaza.
+</Note>
+
+## Prerequisites
+
+- An empty repository on a Git host you control (GitHub, GitLab, or similar)
+- A personal access token with permission to read and write that repository
+
+## Set up sync
+
+<Steps>
+  <Step title="Open Settings → Sync">
+    The panel is titled **Remote sync**.
+  </Step>
+  <Step title="Enter your remote">
+    | Field | What to enter |
+    | --- | --- |
+    | **Remote URL** | Your repository's URL |
+    | **Username** | Your username with the Git host |
+    | **Access token (PAT)** | A personal access token |
+    | **Branch** | The branch this project syncs to |
+  </Step>
+  <Step title="Enable and save">
+    Turn on **Enable sync** and choose **Save**. Figaza confirms with **Saved.**
+  </Step>
+  <Step title="Sync">
+    Choose **Sync now** to push the project's history for the first time.
+  </Step>
+</Steps>
+
+Once a token is stored, the field reads **Access token (stored — enter a new one to replace)**. The value is never shown again; enter a new one to replace it.
+
+**Remove remote** disconnects the project from the remote. Nothing is deleted on the Git host.
+
+## Work from another device
+
+On the second machine, use **Import from repo** — from the project menu or the new-project screen — and enter the same remote URL, username, token, and branch. See [Create a project](/projects/create-a-project).
+
+Each computer has its own **Device ID**, shown in the Sync panel. It is how Figaza tells your machines apart, and it is worth noting if you ever need to explain which one made a change.
+
+## What syncs, and what does not
+
+| Travels with the project | Stays on this computer |
+| --- | --- |
+| Your documents and their full history | Chat conversations |
+| Links between documents, including derived-document links | Background agents and their output |
+| Skills saved to the project | Workstream plans and their history |
+
+<Warning>
+  Plan your workstreams knowing this: a workstream plan does not follow you to your second machine. Documents do.
+</Warning>
+
+## When two devices change the same thing
+
+If the same document changed on both sides, Figaza flags an **Unresolved sync conflict** rather than picking a winner. See [Resolving sync conflicts](/share/resolving-conflicts).
