@@ -1,0 +1,157 @@
+---
+title: "MCP servers"
+description: "Connect Figaza agents to tools from outside the app, and the exact config format the app accepts."
+---
+
+MCP servers give Figaza's agents tools beyond the ones built into the app. If a service you use publishes an MCP server, connecting it lets the assistant use those tools directly in your conversations.
+
+Where an [integration](/integrations/overview) pulls *data* into your project on a schedule, an MCP server gives the assistant the ability to *act* against another system during a turn.
+
+Manage them in **Settings → AI**, under **MCP servers**.
+
+## Add a server
+
+<Steps>
+  <Step title="Choose Add MCP Server">
+    The dialog is titled **Remote MCP Servers**.
+  </Step>
+  <Step title="Paste a config">
+    Paste JSON in either of the two formats below. The editor flags syntax errors — **Fix JSON syntax errors before saving** — before it lets you save.
+  </Step>
+  <Step title="Save">
+    For local servers, Figaza downloads the runtime it needs on first use. You will see **Downloading dependencies…** and then **Dependencies ready**.
+  </Step>
+</Steps>
+
+## The config format
+
+Configs are the same shape used by other MCP clients, so a config you already have for another editor generally pastes in as-is.
+
+Everything lives under a top-level `mcpServers` key. The object keys are the server names:
+
+```json
+{
+  "mcpServers": {
+    "linear": {
+      "url": "https://mcp.linear.app/mcp",
+      "enabled": true
+    }
+  }
+}
+```
+
+An array is also accepted, in which case each entry needs its own `name`:
+
+```json
+{
+  "mcpServers": [
+    { "name": "linear", "url": "https://mcp.linear.app/mcp" }
+  ]
+}
+```
+
+Server names must be unique — a duplicate name is rejected rather than silently overwriting.
+
+### Remote servers
+
+A server with a `url` is remote.
+
+| Field | Required | Notes |
+| --- | --- | --- |
+| `url` | Yes | The server endpoint. Must not be empty |
+| `type` | No | `"http"` or `"sse"`. Inferred from the URL when omitted — a path ending in `/sse` is treated as SSE, everything else as HTTP |
+| `headers` | No | An object of string values, for example an authorization header |
+| `enabled` | No | Boolean, defaults to `true` |
+
+With headers:
+
+```json
+{
+  "mcpServers": {
+    "acme": {
+      "type": "http",
+      "url": "https://mcp.acme.com/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR_TOKEN"
+      },
+      "enabled": true
+    }
+  }
+}
+```
+
+<Warning>
+  A token in a `headers` block is stored as part of the server configuration, unlike an [integration credential](/integrations/overview#stored-credentials), which goes to your operating system's keychain. Prefer a server that authenticates through its own flow where one exists, and treat a pasted token as something you will need to rotate by editing the config.
+</Warning>
+
+### Local servers
+
+A server with a `command` runs as a local process.
+
+| Field | Required | Notes |
+| --- | --- | --- |
+| `command` | Yes | The program to run, for example `npx` |
+| `args` | No | An array of strings |
+| `env` | No | An object of string environment values |
+| `enabled` | No | Boolean, defaults to `true` |
+
+```json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/dir"]
+    }
+  }
+}
+```
+
+Figaza runs `npx`, `bunx`, `node`, and `bun` commands through a JavaScript runtime it downloads and manages itself, so you do not need Node.js installed to use an npx-style server. Any other command is run as given, so a server installed elsewhere on your machine can be launched by absolute path.
+
+### What is rejected
+
+The parser is strict on purpose — a config that is nearly right fails loudly instead of half-working.
+
+| Config | Why it fails |
+| --- | --- |
+| An `auth` block | Not supported |
+| `command`, `args`, or `env` on a remote entry | Local-process fields on a remote server |
+| `type: "stdio"` with no `command` | A local server needs something to run |
+| Any field not listed above | Unrecognised fields are rejected rather than ignored |
+| Two servers with the same name | Duplicate names |
+| `headers` or `env` values that are not strings | Wrong type |
+
+The error message names the server and the offending field.
+
+## Server status
+
+| Status | Meaning |
+| --- | --- |
+| **Connected** | Working, and its tools are available to agents |
+| **Not connected** | Configured but not currently connected |
+| **Disabled** | Turned off by you |
+| **Error** | Something is wrong with the configuration or the server |
+
+**Tools found** lists what each server exposes, with each tool's description. If a server reports no tools yet, you get **No tools discovered yet**.
+
+**Refresh** re-reads a server's tool list — what you want after the server is updated on its end.
+
+## Managing servers
+
+- **Edit** changes the configuration
+- **Disable** and **Enable** turn a server off and back on without removing it
+- **Remove** deletes it
+
+Disabling is the better move when you are diagnosing whether a server is causing a problem: the config survives, so re-enabling is one click rather than a re-paste.
+
+## How agents use MCP tools
+
+Once a server is connected, its tools join Figaza's own for the assistant to call. The assistant is told which MCP services are configured, and reaches for them when they fit the task.
+
+Tools are namespaced by their server — a `list_issues` tool on a server named `github-cloud` is exposed to the agent as `mcp__github_cloud__list_issues` — so two servers offering similarly named tools do not collide.
+
+MCP tool calls appear in the chat transcript like any other tool call, so you can see when an external system was touched.
+
+<Warning>
+  MCP tools reach outside your project, and the review step that protects your documents does not apply to them. An MCP tool that can write to an external system will do so when the assistant judges it appropriate. Connect servers you trust, and prefer read-only servers where the choice exists.
+</Warning>

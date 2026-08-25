@@ -13,12 +13,13 @@ The audience is PMs using the desktop app. Backend configuration, deployment, an
 | `ai/` | Chat, reviewing AI changes, background agents, credit and models |
 | `plans/` | Workstream plans, progress and history, plan proposals |
 | `derive/` | Derived documents (PRD, elevator pitch) and project briefings |
-| `sources/` | Local files, Notion, Google Drive, integrations, search |
+| `sources/` | Local files, Notion, Google Drive, search |
+| `integrations/` | Integrations overview, the /setup-integration skill, MCP servers |
 | `share/` | Export, publish to Drive and Notion, remote sync, conflicts |
-| `skills/` | Built-in skills, authoring skills, MCP servers |
+| `skills/` | Built-in skills, authoring skills |
 | `settings/` | Settings reference, plans and billing, privacy, updates |
 
-Each section opens with a quickstart that gets the reader to a real result.
+Feature sections open with a quickstart that gets the reader to a real result; reference sections open with an overview.
 
 Navigation lives in `docs.json`. Every page must be listed there — an `.mdx` file that is not in the navigation is unreachable.
 

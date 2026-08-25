@@ -1,0 +1,80 @@
+---
+title: "Integrations overview"
+description: "Autonomous data pipelines that pull data from your other tools into a project, built for you by the assistant."
+---
+
+An integration is a scheduled data pipeline. It calls an external tool's API on a schedule, stores what comes back in your project, and makes it available to you and to the assistant.
+
+There is no connector catalogue to browse. You describe the pipeline you want in chat, and the assistant researches the API, collects any credential, installs the integration, and verifies it works.
+
+<Columns cols={2}>
+  <Card title="Set one up" icon="wand-magic-sparkles" href="/integrations/setup-integration">
+    The `/setup-integration` skill, step by step.
+  </Card>
+  <Card title="MCP servers" icon="server" href="/integrations/mcp-servers">
+    A different kind of integration: giving agents tools from outside Figaza.
+  </Card>
+</Columns>
+
+## Integrations, sources, and MCP
+
+Three things bring outside material into Figaza, and they are worth telling apart:
+
+| | What it does | When it runs |
+| --- | --- | --- |
+| [**Sources**](/sources/quickstart) | You import a document from Notion, Drive, or your filesystem | Once, when you import |
+| **Integrations** | Figaza fetches data from an API and stores it in the project | On a schedule you set |
+| [**MCP servers**](/integrations/mcp-servers) | Agents gain tools that reach an external system | When an agent decides to call one |
+
+An integration is the right choice when you want the *data* in your project, refreshed. An MCP server is the right choice when you want the assistant to be able to *act* against another system during a conversation.
+
+## What an integration is made of
+
+Every integration is a small, inspectable record:
+
+| Part | What it holds |
+| --- | --- |
+| **Name** | The display name you see in Sources and in Settings |
+| **Provider** | The service it belongs to — Linear, Trello, PostHog. Integrations against the same provider are grouped and share a credential |
+| **Connector** | How it talks to the service. Currently HTTP REST |
+| **Auth** | A reference to a credential in your operating system's keychain, and whether it is an API key or a bearer token. The secret itself is never written into the record |
+| **Trigger** | A schedule, or manual only |
+| **Source** | The base URL, the endpoint, and any query parameters — including parameters whose values are pulled from the keychain at fetch time |
+
+Because the credential is a *reference*, you can inspect or share an integration's configuration without exposing the secret.
+
+## Where the data goes
+
+Each run writes what the API returned into the project, as a file named after the endpoint it came from, with an extension matching the response: `.json`, `.csv`, `.xml`, `.html`, or `.txt`.
+
+Those files appear in the **Sources** panel under the integration's name, and the assistant can read them like any other project content — which is the point. Once your Linear issues are in the project, *"what have we shipped against this initiative?"* becomes a question the assistant can actually answer.
+
+## Managing integrations
+
+Integrations are listed in **Settings → Integrations** and in the **Sources** panel in the sidebar. Each shows its **Last run** time and its number of **Runs**.
+
+| Action | What it does |
+| --- | --- |
+| **Run now** | Fetches immediately, outside the schedule |
+| **Pause** / **Resume** | Stops and restarts scheduled runs without losing the setup |
+| **Delete integration** | Removes it permanently |
+
+An integration that has not fetched anything yet shows **No data yet**; one that has never run shows **Never** as its last run. A **Manual** badge means it has no schedule and only runs when you ask.
+
+Integrations are per-project, so the Integrations tab needs a project open.
+
+## Stored credentials
+
+**Settings → Integrations** also holds **Stored credentials** — the API keys and tokens your integrations use.
+
+Values are never displayed, not even to you. You can **Replace value** or **Delete credential**, and that is the whole surface.
+
+Credentials are keyed per provider, so you enter a Linear token once no matter how many Linear pipelines you build. Deleting a credential breaks every integration that depends on it.
+
+## What is not supported
+
+Services that require OAuth2 — the *Sign in with…* flow, common for Google and Salesforce — cannot be set up this way. They need a purpose-built connector, and the assistant tells you so rather than trying and failing.
+
+For those, use the built-in [Notion](/sources/notion) and [Google Drive](/sources/google-drive) connections.
+
+API key and bearer token services are what this works for, which covers most developer-facing tools.

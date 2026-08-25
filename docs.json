@@ -61,14 +61,21 @@
             ]
           },
           {
-            "group": "Sources and integrations",
+            "group": "Sources",
             "pages": [
               "sources/quickstart",
               "sources/local-files",
               "sources/notion",
               "sources/google-drive",
-              "sources/integrations",
               "sources/search"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "pages": [
+              "integrations/overview",
+              "integrations/setup-integration",
+              "integrations/mcp-servers"
             ]
           },
           {
@@ -81,12 +88,11 @@
             ]
           },
           {
-            "group": "Skills and extensions",
+            "group": "Skills",
             "pages": [
               "skills/quickstart",
               "skills/built-in-skills",
-              "skills/authoring-skills",
-              "skills/mcp-servers"
+              "skills/authoring-skills"
             ]
           },
           {
@@ -114,6 +120,11 @@
     }
   },
   "contextual": {
-    "options": ["copy", "view", "chatgpt", "claude"]
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude"
+    ]
   }
 }
