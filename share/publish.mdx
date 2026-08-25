@@ -1,0 +1,67 @@
+---
+title: "Publishing to Drive and Notion"
+description: "Push a document out to Google Drive or Notion, and keep the published copy up to date automatically."
+---
+
+Publishing creates a copy of a Figaza document in Google Drive or Notion — and remembers the link, so future changes update that same copy instead of piling up duplicates.
+
+## Prerequisites
+
+- [Google Drive](/sources/google-drive) or [Notion](/sources/notion) connected in **Sources**
+
+## Publish to Google Drive
+
+<Steps>
+  <Step title="Choose Publish to Drive">
+    From the document tab menu, choose **Publish to Drive**.
+  </Step>
+  <Step title="Pick a destination folder">
+    Browse from **My Drive** to the folder you want, then choose **Publish here**.
+  </Step>
+</Steps>
+
+What arrives in Drive depends on the document:
+
+- **Documents** upload as Markdown and are converted into a Google Doc.
+- **Slide decks** are rendered and uploaded as a native Google Slides file.
+
+## Publish to Notion
+
+<Steps>
+  <Step title="Choose Publish to Notion">
+    From the document tab menu, choose **Publish to Notion**.
+  </Step>
+  <Step title="Pick a parent page">
+    Search your pages or choose **Workspace root**, then **Publish here**. Your document is created as a page under it.
+  </Step>
+</Steps>
+
+## Automatic re-sync
+
+Once a document is published, Figaza keeps the published copy current. When your project reaches a new checkpoint, any document with a published copy is pushed again.
+
+Two things follow from that:
+
+- Re-sync happens on checkpoints, not on every keystroke, so your colleagues see coherent versions rather than half-finished sentences.
+- Unchanged documents are never re-pushed, so publishing many documents does not mean constant churn in Drive or Notion.
+
+Publishing the same document again updates the existing file or page. It never creates a second one.
+
+## When sync has a problem
+
+Figaza tells you what went wrong and offers the action that fixes it:
+
+| Message | What happened | What to do |
+| --- | --- | --- |
+| **Lost access to …** | The connection was revoked or expired | Reconnect the source in **Sources** |
+| **The … copy was deleted** | The file or page no longer exists | **Re-export to …** to recreate and relink it |
+| **… is busy and will retry automatically** | You hit a rate limit | Nothing — it retries on its own |
+| **Couldn't reach …** | A network problem | Check your connection |
+
+## Stop syncing a document
+
+**Remove … link** disconnects the document from its published copy. The copy in Drive or Notion is left exactly where it is — nothing is deleted on the other side — and the document simply stops being updated until you publish it again.
+
+## Publishing is not importing
+
+The two directions are independent. Importing a Notion page and editing it in Figaza does not change the Notion page — publishing is what pushes work out, and it is always something you choose to do.

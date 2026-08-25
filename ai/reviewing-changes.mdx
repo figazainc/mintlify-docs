@@ -1,0 +1,52 @@
+---
+title: "Reviewing AI changes"
+description: "How proposed edits work, how to accept or reject them, and what YOLO mode changes."
+---
+
+When the assistant changes a document, it proposes the change rather than making it. You decide what lands.
+
+## The review flow
+
+<Steps>
+  <Step title="A proposal arrives">
+    The document shows a **Pending AI changes** banner, and each change is marked inline where it belongs. The chat panel shows a **Pending changes** count.
+  </Step>
+  <Step title="Read the changes in place">
+    Because changes appear in the document rather than in a separate diff view, you read them in the context of the surrounding text — the thing you actually need to judge.
+  </Step>
+  <Step title="Decide">
+    Use **Accept** or **Reject** on each individual change, or **Accept all** and **Reject all** to take the whole proposal.
+  </Step>
+</Steps>
+
+Nothing is written into the saved document until you accept it. Rejecting leaves the document exactly as it was.
+
+## Before every proposal, a clean point
+
+Figaza saves a version of your project before the assistant starts a new round of changes. Whatever you had before the assistant touched anything is recoverable, even after you accept.
+
+See [Versions and history](/projects/versions).
+
+## Tracking outstanding work
+
+The **Status** section at the top of the sidebar summarises what has changed and is not yet checkpointed, under **What you're working on**. When everything is settled it reads **No changes detected**.
+
+If a document has pending AI changes, you cannot start a version comparison on it until you resolve them.
+
+## YOLO mode
+
+**Settings → AI** has a **YOLO mode** toggle: *automatically accept all AI changes without showing diffs for review*.
+
+With it on, the assistant's edits land directly in your documents and you never see the accept and reject controls.
+
+<Warning>
+  YOLO mode removes the review step entirely — including for changes made by background agents and skills, which you are not watching in real time. Your version history is still there, so nothing is unrecoverable, but recovering means finding the version and restoring from it rather than clicking **Reject**.
+
+  It is worth having on when you are iterating fast on a draft you are prepared to throw away. It is worth having off for anything you would be embarrassed to ship.
+</Warning>
+
+## What the assistant cannot do
+
+- It cannot edit documents at all in **Plan** mode.
+- Skills run with only the tools they were configured with; a read-only skill cannot write anything regardless of what it is asked to do. See [Authoring skills](/skills/authoring-skills).
+- It works within the current project only.

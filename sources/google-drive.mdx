@@ -1,0 +1,61 @@
+---
+title: "Google Drive"
+description: "Connect Google Drive, import documents, and understand which file types work."
+---
+
+Connecting Google Drive lets you browse and search your Drive from inside Figaza and import files as project documents.
+
+## Connect
+
+<Steps>
+  <Step title="Start the connection">
+    In **Sources**, choose **Connect Google Drive**.
+  </Step>
+  <Step title="Authorise in your browser">
+    Google asks you to grant Figaza access to your Drive.
+  </Step>
+  <Step title="Return to Figaza">
+    The Google Drive section lists the contents of your Drive.
+  </Step>
+</Steps>
+
+To disconnect later, use **Disconnect Google Drive** in the section header.
+
+## Import a file
+
+Browse to a file and open it to import it into the current project.
+
+| File type | Imported as |
+| --- | --- |
+| Google Docs | Plain text |
+| Markdown | Text, as-is |
+| Plain text and JSON | Text, as-is |
+| Anything else | Not supported — the import is refused with an explicit error |
+
+The refusal is deliberate: rather than importing a spreadsheet or a PDF as unusable content, Figaza tells you it cannot handle it.
+
+If the project has an active workstream plan, an imported file is linked to that plan.
+
+## Search
+
+Once connected, Drive results appear in the search box at the top of the window alongside your project files and Notion. See [Search](/sources/search).
+
+## Publishing back to Drive
+
+Import and publish are separate directions. Editing an imported document in Figaza does not change the file in Drive.
+
+To push a document out, use **Publish to Drive** from the document tab menu. Markdown documents become Google Docs, and slide decks become native Google Slides files. See [Publishing to Drive and Notion](/share/publish).
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Open or create a managed project to import Google Drive files">
+    Imports need an active project. Create or open one first.
+  </Accordion>
+  <Accordion title="Couldn't load Google Drive files.">
+    Usually a connection problem. Check your network, then reload the section. If it persists, disconnect and reconnect Drive.
+  </Accordion>
+  <Accordion title="Lost access to Google Drive. Reconnect to resume syncing.">
+    The authorisation was revoked or expired. Reconnect from **Sources**.
+  </Accordion>
+</AccordionGroup>

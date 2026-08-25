@@ -1,0 +1,58 @@
+---
+title: "Notion"
+description: "Connect a Notion workspace, import pages, and keep imported pages current."
+---
+
+Connecting Notion lets you search your workspace from inside Figaza and pull pages into a project as documents.
+
+## Connect
+
+<Steps>
+  <Step title="Start the connection">
+    In **Sources**, choose **Connect Notion**.
+  </Step>
+  <Step title="Authorise in your browser">
+    Notion asks which pages Figaza may access. Grant access to the pages and databases you want to work with.
+  </Step>
+  <Step title="Return to Figaza">
+    The Notion section now lists your pages.
+  </Step>
+</Steps>
+
+To disconnect later, use **Disconnect Notion** in the section header.
+
+## Import a page
+
+Browse or search your pages in the Notion section and open one to import it into the current project. The page is converted to Markdown and stored as a project document, with its Notion page recorded as its origin.
+
+Importing the same page twice does not create a duplicate — you get the document you already have.
+
+If the project has an active workstream plan, an imported page is linked to that plan, so the material you just pulled in shows up next to the work it belongs to.
+
+## Refresh an imported page
+
+When the Notion page has moved on, choose **Reload from Notion** to pull the current content into the project document.
+
+## Search
+
+Once connected, Notion results appear in the search box at the top of the window alongside your project files and Google Drive. See [Search](/sources/search).
+
+## Publishing back to Notion
+
+Import and publish are separate directions. Editing an imported document in Figaza does not change the Notion page.
+
+To push a document out to Notion, use **Publish to Notion** from the document tab menu — see [Publishing to Drive and Notion](/share/publish).
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Open or create a managed project to import Notion pages">
+    Imports need an active project. Create or open one first.
+  </Accordion>
+  <Accordion title="Lost access to Notion. Reconnect to resume syncing.">
+    The authorisation was revoked or expired. Reconnect Notion from **Sources**.
+  </Accordion>
+  <Accordion title="A page you expect is not listed">
+    Figaza only sees pages you granted it access to. Re-run the connection and widen the page selection in Notion's authorisation screen.
+  </Accordion>
+</AccordionGroup>

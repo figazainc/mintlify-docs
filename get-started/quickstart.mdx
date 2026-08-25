@@ -1,0 +1,116 @@
+---
+title: "Quickstart"
+description: "Create a project, let Figaza research your company, and derive your first PRD."
+---
+
+This quickstart takes you from an empty app to a project with real content in it: three researched company-context documents, a workstream plan, and a PRD derived from your own notes.
+
+Budget about fifteen minutes, most of it waiting while research runs in the background.
+
+## Prerequisites
+
+- Figaza installed and signed in — see [Install and sign in](/get-started/install)
+- Remaining AI credit on your account (new personal accounts include a one-time grant)
+- The name or website of the company you work for
+
+## 1. Create a project with company research
+
+<Steps>
+  <Step title="Start a new project">
+    On first run you land on **Start a new project**. If you already have projects, open the project menu at the top of the sidebar and choose **New project**.
+  </Step>
+  <Step title="Describe the company">
+    Type a URL, a company name, or a short description into the input. Figaza labels what it detected — **URL detected**, **Company name detected**, or **Description** — so you can tell how it will search.
+  </Step>
+  <Step title="Start research">
+    Choose **Start research**. Figaza searches public sources and reads the company's own pages.
+
+    This runs as a background agent. Choose **Minimize** and keep working — you can follow progress in the **Agents** section of the sidebar at any time.
+  </Step>
+  <Step title="Name and create the project">
+    When research finishes, confirm the **Project name** and choose **Create project**.
+  </Step>
+</Steps>
+
+You now have a project containing a `company-context/` folder with three documents:
+
+| Document | What it holds |
+| --- | --- |
+| `company-overview` | Summary, products and services, market and positioning, business model, size and stage |
+| `personas` | Three to five personas with goals, pains, and success metrics, each tagged as confirmed from evidence or inferred from industry |
+| `competitor-analysis` | Three to six competitors with positioning and differentiators, plus how the company compares |
+
+<Tip>
+  Every research document ends with a **Follow-up questions for the PM** section listing what the research could not resolve. Figaza flags gaps instead of inventing facts — start there.
+</Tip>
+
+<Note>
+  Prefer to start from what you already have? The same screen offers **Start with an empty project**, **Import a folder**, and **Import a git repository**. See [Create a project](/projects/create-a-project).
+</Note>
+
+## 2. Ask the assistant about your project
+
+The chat panel sits on the right-hand side of the window.
+
+1. Make sure the mode selector reads **Agent**.
+2. Ask something that requires reading the project, for example: `Summarise our competitive position in three bullets, and tell me what evidence is missing.`
+
+The assistant reads project documents as it works. Tool cards in the transcript show you exactly what it read — you are never guessing what it based an answer on.
+
+## 3. Capture what you are working on
+
+Open the **Plan** section in the sidebar and choose **Start new plan**. Give the workstream a short title, a description of what you are working toward, and a few checklist items.
+
+If you start a new chat in a project without a plan, the assistant may propose one from your conversation. A proposal stays marked pending until you **Execute**, **Merge**, or **Reject** it — nothing replaces your plan silently. See [Workstream plans](/plans/quickstart).
+
+## 4. Write a source document
+
+Create the document your PRD will be derived from.
+
+1. In the sidebar's project file tree, choose **New file**.
+2. Name it something like `feature-brief.md`.
+3. Write a few paragraphs about the feature you have in mind — the problem, who it is for, and roughly what you would build.
+
+Ask the assistant to help. When it proposes edits, the editor shows them inline with **Accept** and **Reject** on each change, plus **Accept all** and **Reject all** at the top. Nothing is written to your document until you accept it. See [Reviewing AI changes](/ai/reviewing-changes).
+
+## 5. Derive a PRD
+
+<Steps>
+  <Step title="Open the derive dialog">
+    With `feature-brief.md` open, choose **Derive...** from the document tab menu.
+  </Step>
+  <Step title="Pick your outputs">
+    Select **PRD (Engineers)**. You can also select **Elevator Pitch (C-Level)** and choose whether it comes out as a **Document** or a **Slide Deck**.
+  </Step>
+  <Step title="Derive">
+    Choose **Derive all**. Each derived document is written to the same folder as its source, with a link back to it.
+  </Step>
+</Steps>
+
+Derived documents flag missing information rather than inventing it, and they keep a link to their source so you can re-derive later when the brief changes. See [Derived documents](/derive/derived-documents).
+
+## 6. Share the result
+
+From the document tab menu you can:
+
+- **Export as** PDF, DOCX, PPTX, or a Markdown text file
+- **Publish to Drive** or **Publish to Notion**, which keeps the published copy in sync as you keep editing
+
+See [Exporting documents](/share/export) and [Publishing to Drive and Notion](/share/publish).
+
+## Where to next
+
+<Columns cols={2}>
+  <Card title="Tour the workspace" icon="table-columns" href="/get-started/workspace-tour">
+    What each panel and section is for.
+  </Card>
+  <Card title="Core concepts" icon="cube" href="/get-started/core-concepts">
+    Projects, versions, workstreams, agents, and skills.
+  </Card>
+  <Card title="Bring in your sources" icon="plug" href="/sources/quickstart">
+    Connect Notion, Google Drive, and your filesystem.
+  </Card>
+  <Card title="Create a skill" icon="sparkles" href="/skills/quickstart">
+    Save a prompt you run over and over with a slash command.
+  </Card>
+</Columns>

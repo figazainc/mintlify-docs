@@ -1,127 +1,119 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Figaza",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#4F46E5",
+    "light": "#818CF8",
+    "dark": "#4338CA"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Documentation",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Get started",
             "pages": [
               "index",
-              "quickstart",
-              "development"
+              "get-started/install",
+              "get-started/quickstart",
+              "get-started/workspace-tour",
+              "get-started/core-concepts"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Projects and documents",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "projects/create-a-project",
+              "projects/documents",
+              "projects/editor",
+              "projects/versions",
+              "projects/initiatives"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Working with AI",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "ai/quickstart",
+              "ai/chat",
+              "ai/reviewing-changes",
+              "ai/background-agents",
+              "ai/credit-and-models"
             ]
           },
           {
-            "group": "AI tools",
+            "group": "Workstream plans",
             "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API reference",
-        "groups": [
-          {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
+              "plans/quickstart",
+              "plans/managing-plans",
+              "plans/progress-and-history",
+              "plans/plan-proposals"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Derived documents",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "derive/quickstart",
+              "derive/derived-documents",
+              "derive/project-briefing"
+            ]
+          },
+          {
+            "group": "Sources and integrations",
+            "pages": [
+              "sources/quickstart",
+              "sources/local-files",
+              "sources/notion",
+              "sources/google-drive",
+              "sources/integrations",
+              "sources/search"
+            ]
+          },
+          {
+            "group": "Sharing and sync",
+            "pages": [
+              "share/export",
+              "share/publish",
+              "share/sync",
+              "share/resolving-conflicts"
+            ]
+          },
+          {
+            "group": "Skills and extensions",
+            "pages": [
+              "skills/quickstart",
+              "skills/built-in-skills",
+              "skills/authoring-skills",
+              "skills/mcp-servers"
+            ]
+          },
+          {
+            "group": "Account and settings",
+            "pages": [
+              "settings/settings",
+              "settings/plans-and-billing",
+              "settings/privacy",
+              "settings/updates-and-feedback"
             ]
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
   "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Download Figaza",
+      "href": "https://figaza.com"
     }
   },
   "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
-  },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
+    "options": ["copy", "view", "chatgpt", "claude"]
   }
 }

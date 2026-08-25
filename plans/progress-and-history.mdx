@@ -1,0 +1,64 @@
+---
+title: "Progress and history"
+description: "Plan progress summaries, summarising a range of changes, and reviewing past workstreams."
+---
+
+A plan tells you what you meant to do. Progress summaries and history tell you what actually happened.
+
+## Plan progress
+
+The **Plan progress** box sits inside the plan section. It holds a narrative summary of what has changed in the project since this workstream started — written from your actual document changes, not from your checklist.
+
+Expand it for the preview, or choose **Open...** to read the full summary.
+
+### It refreshes itself
+
+When you open a project, Figaza checks whether the summary is still current. A summary is stale if it was generated on an earlier day, or if the project has changed since it was written.
+
+The status line tells you which step is running:
+
+| Status | What is happening |
+| --- | --- |
+| **Checking summary freshness…** | Comparing the existing summary against the project — no AI involved |
+| **Updating summary…** | Generating a new summary |
+| **Summary refresh failed.** | The generation did not complete; the previous summary is left in place |
+
+Generation runs as a background task, so nothing blocks while it works.
+
+### What goes into a summary
+
+Summaries are built from changes to your document content only. Internal bookkeeping is excluded, and internal storage paths are resolved into the document links you recognise — so the summary reads as *what changed in `discovery/interviews.md`*, not as machine paths.
+
+## Summarising a specific range
+
+Sometimes you want the story of a particular stretch — the last two days, or everything since a review.
+
+<Steps>
+  <Step title="Open Summarize range">
+    Choose **Summarize range** in the plan section. You get the project's list of saved checkpoints, newest first.
+  </Step>
+  <Step title="Pick two checkpoints">
+    Select one as the start — it is marked **Start:** — then select the other end of the range. The selection between them highlights.
+  </Step>
+  <Step title="Generate">
+    Choose **Generate summary**. **Clear selection** starts over.
+  </Step>
+</Steps>
+
+The range summary uses the same material and the same style as the automatic one; only the window differs.
+
+<Note>
+  The checkpoint list shows the most recent checkpoints rather than all of them. If it is capped, the panel says so at the bottom.
+</Note>
+
+## Workstream history
+
+Choose **History** in the plan section for **Ended workstreams**, listed newest first. Each entry keeps its title, description, and checklist, so you can see what a past workstream set out to do and how far it got.
+
+If nothing has been ended yet, it reads *No ended workstreams yet.*
+
+This is the record to open when you come back to a project after a few weeks, or when someone asks what happened last quarter.
+
+<Note>
+  Workstream plans, including history, are stored on this device. They are not part of project history and do not travel with a project you sync to another machine. See [Remote sync](/share/sync).
+</Note>

@@ -1,0 +1,55 @@
+---
+title: "Resolving sync conflicts"
+description: "What to do when the same document changed on two devices."
+---
+
+A sync conflict happens when a document changed on this device and on another one since they last agreed. Figaza never picks a winner silently — it flags the conflict and waits for you.
+
+## Spotting a conflict
+
+- The project shows a badge counting **unresolved sync conflicts**.
+- Each affected file is marked **Unresolved sync conflict** in the file tree.
+
+## Your four options
+
+Right-click a conflicted file and choose **Resolve sync conflict**.
+
+| Option | What it does | Use it when |
+| --- | --- | --- |
+| **Accept local (discard remote)** | Keeps this device's version | You know your copy is the good one |
+| **Accept remote (discard local)** | Keeps the other device's version | You know theirs is the good one |
+| **AI merge…** | The assistant merges both versions and shows you the result to approve | Both sides have real content and you want a first pass |
+| **Manual merge…** | You decide difference by difference | The changes are substantive and you want control |
+
+## AI merge
+
+Choose **AI merge…** and the assistant produces a merged document. You review the result and choose **Accept merge** to resolve the conflict with that content, or **Cancel** to back out and pick a different approach.
+
+Read it before accepting. A merge that looks tidy can still have dropped a point one side was making.
+
+## Manual merge
+
+**Manual merge…** shows you the base, local, and remote versions of the document, and a **Result** you build.
+
+<Steps>
+  <Step title="Work through each difference">
+    For each one, choose **Take local**, **Take remote**, or **Dismiss (keep base)** to fall back to what both sides started from.
+  </Step>
+  <Step title="Watch the pending count">
+    The dialog tracks how many differences are still undecided.
+  </Step>
+  <Step title="Accept">
+    **Accept** resolves the conflict with your result. If differences are still pending, Figaza warns you and offers **Accept anyway**.
+  </Step>
+</Steps>
+
+<Note>
+  Files that are not text cannot be merged difference by difference. For those, the manual merge view tells you so and you use **Accept local** or **Accept remote** instead.
+</Note>
+
+## Avoiding conflicts
+
+Conflicts come from working on the same document in two places without syncing in between. Two habits remove most of them:
+
+- **Sync now** before you start work on a device, and again when you stop.
+- Keep one device as the place you write, and use the other for reading.

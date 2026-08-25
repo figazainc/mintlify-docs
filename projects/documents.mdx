@@ -1,0 +1,64 @@
+---
+title: "Documents"
+description: "Create, organise, rename, move, and trace the documents in a project."
+---
+
+Documents are the files in your project. You work with them in the **Project files** section of the sidebar and in tabs in the middle of the window.
+
+## Create a document
+
+In the project file tree, choose **New file**, type a name such as `feature-brief.md`, and confirm.
+
+To create it inside a folder, use a path — typing `discovery/interviews.md` creates the `discovery` folder if it does not exist.
+
+## Organise documents
+
+Right-click any file or folder for its actions:
+
+| Action | What it does |
+| --- | --- |
+| **Open** | Opens the document in a new tab |
+| **Rename** | Renames in place; links from other documents keep working |
+| **Move to…** | Moves the file to another folder |
+| **Copy path** | Copies the document's path for pasting into a chat message or another document |
+| **Make a copy** | Duplicates the document alongside the original |
+| **Derived documents** | Lists the documents derived from this one |
+| **View history** | Opens version history for this document |
+
+**Move to…** lets you type a folder path — use `/` for subfolders — or pick **Root (project root)**. **Collapse all** tidies a deep tree.
+
+<Tip>
+  Renaming and moving are safe. Documents keep a stable identity behind the scenes, so links between them survive reorganisation. Write links freely and reorganise later.
+</Tip>
+
+## Delete documents
+
+Choose **Delete file** or **Delete folder**. Deleting a folder deletes everything inside it, and Figaza warns you before it does.
+
+Deletions cannot be undone from the file tree — but they are captured in project history, so a document deleted after a version was saved can still be recovered by comparing against that version. See [Versions and history](/projects/versions).
+
+## Derived documents
+
+When you generate a PRD or an elevator pitch from a document, Figaza records the link between them.
+
+- On the **source**, **Derived documents** in the context menu lists everything generated from it.
+- On the **source tab**, **Update derived...** refreshes those documents against the current version of the source.
+- Each **derived** document links back to its source.
+
+This is what keeps a set of artifacts coherent as the underlying thinking changes. See [Derived documents](/derive/derived-documents).
+
+## Document types
+
+The editor adapts to what you open:
+
+- **Markdown documents** open in the rich text editor
+- **CSV files** open in a table editor
+- **Images** open in a viewer
+- **Slide decks** open in a slide viewer with a presentation mode
+- **Dashboard documents** render as charts, statistics, and tables, with a **JSON** view if you need to see the underlying spec
+
+## Finding documents
+
+The search box at the top of the window searches project files alongside Notion and Google Drive. See [Search](/sources/search).
+
+Inside a document, use **Find** (`⌘F`) and **Find and Replace** (`⌘⇧H`).

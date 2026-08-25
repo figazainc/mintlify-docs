@@ -1,0 +1,61 @@
+---
+title: "Managing a plan"
+description: "Items, statuses, owners, dependencies, and executing the AI-owned work."
+---
+
+The **Plan** section in the sidebar holds the active workstream for the current project. Only one workstream can be active at a time.
+
+## The plan itself
+
+| Field | What it is for |
+| --- | --- |
+| **Title** | A short label — a few words. It identifies the workstream in history. |
+| **Description** | What you are working toward. Expand the field to edit it, collapse it to get the space back. |
+| **Checklist items** | The concrete things this workstream has to get through. |
+
+## Item status
+
+Each item cycles through four statuses:
+
+- **Pending** — not started
+- **In progress** — being worked
+- **Blocked** — waiting on something else
+- **Done** — finished
+
+Use **Mark as blocked** to flag an item, and **Clear blocked — return to pending** when it frees up. Blocked is worth using honestly: it is the signal that shows up in your progress summary and in history.
+
+Other item actions:
+
+- **Clear item** empties the text without removing the row
+- **Remove item** deletes the row
+
+## Owners: human or AI
+
+Every item is owned by either a **Human** or the **AI**. Click the owner marker on an item to switch it.
+
+- **Human-owned** items are yours. The assistant leaves them alone.
+- **AI-owned** items are work you are delegating.
+
+When a plan has AI-owned items that are not finished, an **Execute** button appears. Choosing it puts the assistant to work on those items specifically. Anything it changes in your documents still comes back as a proposal for you to review — see [Reviewing AI changes](/ai/reviewing-changes).
+
+This is the practical difference between a plan and a to-do list: part of the list can execute itself.
+
+## Dependencies
+
+Open **Edit dependencies** on an item and **Add dep** to name items it needs first. The item then displays **Needs: …**.
+
+Dependencies are a statement of order, not a scheduler — nothing is blocked automatically. They exist so that you, and the assistant, can see the sequence.
+
+## Linked context
+
+Plans can carry links to project documents, so the material a workstream depends on is one click away. The assistant adds these links when it proposes a plan, and importing a document from Notion or Google Drive into a project with an active plan links the new document to it.
+
+## Ending a workstream
+
+**End** closes the active workstream and moves it into history. There is no way to have two active workstreams in one project — if the work has genuinely split in two, either end the current one, or track the longer arc as an [initiative](/projects/initiatives) instead.
+
+## Empty state
+
+If no plan exists, the section reads *No active workstream plan for this project. Start one to track goals and checklist items.* — with **Start new plan**.
+
+If no project is open, it reads *Select a project to manage a workstream plan.*

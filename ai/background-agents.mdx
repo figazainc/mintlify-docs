@@ -1,0 +1,65 @@
+---
+title: "Background agents"
+description: "Hand long-running work to an agent and keep working while it runs."
+---
+
+Some work takes minutes, not seconds: researching a market, sweeping every document for inconsistencies, drafting a long artifact. Background agents do that work on their own while you carry on.
+
+They live in the **Agents** section of the sidebar.
+
+## Create a task
+
+<Steps>
+  <Step title="Open Agents">
+    Expand the **Agents** section in the sidebar and choose **New task**.
+  </Step>
+  <Step title="Describe the work">
+    Write what the task should do. Be specific about the output you want — a background agent has no one to ask mid-run, so an ambiguous brief produces an ambiguous result.
+  </Step>
+  <Step title="Run it">
+    Choose **Run**. The task appears in the list with a live status.
+  </Step>
+</Steps>
+
+The assistant also creates background tasks on its own when a request warrants it — you will see a **Background task** card in the chat transcript when it does.
+
+## Task states
+
+| Status | Meaning |
+| --- | --- |
+| **Starting** | The agent is being prepared |
+| **Running** | Work is in progress |
+| **Stopping** | You asked it to stop and it is winding down |
+| **Completed** | Finished successfully |
+| **Failed** | Ended with an error |
+| **Cancelled** | Stopped before finishing |
+
+You get a notification when an agent starts, completes, fails, or is cancelled, so you do not have to watch the list.
+
+## Working with a task
+
+- **Open output** opens what the agent produced.
+- **Created files** lists documents the task wrote into your project.
+- **Copy Prompt** copies the brief it ran with — useful for tweaking and re-running.
+- **Retry** runs it again after a failure.
+- **Rename task** gives it a name you will recognise later.
+- **Stop task** ends a run in progress.
+- **Delete task** permanently removes the task and its output.
+
+## Where onboarding research shows up
+
+The company research that runs when you create a project is a background agent like any other. If you minimise the onboarding dialog, you can follow it in the **Agents** section, and the output lands in your project when it completes.
+
+## Good tasks and bad tasks
+
+Background agents are a good fit when:
+
+- The work is well specified up front
+- It touches many documents or needs a lot of reading
+- You do not need to steer it halfway through
+
+Use the chat instead when you expect to iterate, or when you want to review each step. A background agent's changes are still subject to your review settings — see [Reviewing AI changes](/ai/reviewing-changes).
+
+<Note>
+  Background tasks and their output are stored on this device. They are not part of project history and do not travel with a project you sync to another machine.
+</Note>

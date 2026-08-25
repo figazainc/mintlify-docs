@@ -1,0 +1,54 @@
+---
+title: "MCP servers"
+description: "Connect Figaza agents to tools from outside the app."
+---
+
+MCP servers give Figaza's agents tools beyond the ones built into the app. If a service you use publishes an MCP server, connecting it lets the assistant use those tools directly in your conversations.
+
+Manage them in **Settings → AI**, under **MCP servers**.
+
+## Add a server
+
+<Steps>
+  <Step title="Choose Add MCP Server">
+    The dialog is titled **Remote MCP Servers**.
+  </Step>
+  <Step title="Paste a config">
+    Two formats are accepted:
+
+    - A **remote URL config**, as used by editors like Cursor
+    - An **npx config**, in the Claude Desktop style
+
+    The dialog shows the supported shape of each, and flags JSON syntax errors before you can save.
+  </Step>
+  <Step title="Save">
+    For npx-style servers, Figaza downloads the dependencies it needs — you will see **Downloading dependencies…** and then **Dependencies ready**.
+  </Step>
+</Steps>
+
+## Server status
+
+| Status | Meaning |
+| --- | --- |
+| **Connected** | Working, and its tools are available to agents |
+| **Not connected** | Configured but not currently connected |
+| **Disabled** | Turned off by you |
+| **Error** | Something is wrong with the configuration or the server |
+
+**Tools found** lists what each server exposes. **Refresh** re-reads a server's tool list, which is what you want after the server is updated on its end.
+
+## Managing servers
+
+- **Edit** changes the configuration
+- **Disable** and **Enable** turn a server off and back on without deleting it
+- **Remove** deletes it
+
+## How agents use MCP tools
+
+Once a server is connected, its tools are available to the assistant in chat alongside Figaza's own. The assistant is told which MCP services are configured, and calls them when they fit the task.
+
+Tool calls appear in the transcript like any other, so you can see when an external tool was used.
+
+<Note>
+  MCP tools reach outside your project. Connect servers you trust, and remember that a tool which can write to an external system will do so when asked — the review step that protects your documents applies to your documents, not to third-party services.
+</Note>

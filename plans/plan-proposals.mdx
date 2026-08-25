@@ -1,0 +1,57 @@
+---
+title: "Plan proposals and merges"
+description: "What happens when the assistant proposes a workstream plan, and how to resolve a conflict with the plan you already have."
+---
+
+When you start a new chat in a project, the assistant may infer a workstream plan from the conversation and propose it. It proposes only when the work warrants it — a quick proofread does not need a plan, and you will not get one.
+
+A proposal never replaces anything on its own. It stays visibly pending until you decide.
+
+## Deciding on a proposal
+
+A pending proposal shows the hint **New plan proposal — Execute, Merge, or Reject** with these actions:
+
+| Action | What it does |
+| --- | --- |
+| **Execute** | Accepts the plan and immediately puts the assistant to work on its AI-owned items |
+| **Approve** | Accepts the plan as-is. Shown instead of **Execute** when the proposal has no AI-owned items |
+| **Merge** | Combines the proposal with your existing plan. Only offered when there is a conflict |
+| **Reject** | Discards the proposal. Your existing plan is untouched |
+
+You can also edit a proposal before accepting it — adjust the title, rewrite items, change owners — and save it as your active plan.
+
+## Conflicts
+
+Because only one workstream can be active per project, a proposal that arrives while you already have an active plan is a conflict. Figaza will not resolve it for you.
+
+Your options are to **Execute** the new plan (which ends the current one and activates the proposal), **Merge** the two, or **Reject** the proposal and carry on.
+
+## The merge view
+
+**Merge** opens **Resolve workstream merge**, which walks through the three parts of a plan.
+
+<Steps>
+  <Step title="Title">
+    Choose **Use current plan title** or **Use proposal title**. Editing the field directly switches to a custom title — your explicit choice is not overwritten until you use the buttons again.
+  </Step>
+  <Step title="Description">
+    Same pattern: start from the current plan or the proposal, then refine the text. If you want one blended narrative, write it here.
+  </Step>
+  <Step title="Checklist">
+    The merged checklist starts from your current plan's items. Add lines from the proposal only where you want them, using **Add from proposal** and **Add to merge**.
+
+    **Reset to current items only** and **Use proposal items only** are the two shortcuts if you would rather start from one side wholesale. **Add empty row** adds a line of your own, and you can mark items blocked here too.
+  </Step>
+</Steps>
+
+Choose **Accept merge** to save the result as your active plan. The proposal is discarded once merged.
+
+The default bias is deliberate: your plan is the baseline, and the proposal contributes. An AI suggestion should not quietly take over the checklist you have been working to.
+
+## Why proposals are never silent
+
+Three rules hold, always:
+
+1. A proposal is marked pending until you act on it.
+2. Nothing replaces a non-ended plan without you explicitly choosing it.
+3. If inference fails, you get an explicit error and an empty or manual plan — never an invented placeholder plan.

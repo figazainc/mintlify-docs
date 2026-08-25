@@ -1,0 +1,66 @@
+---
+title: "The editor"
+description: "Write and format documents, insert structure, and navigate long drafts."
+---
+
+Figaza's editor is a rich text editor over Markdown. You write and format visually; the document is stored as Markdown so it stays portable, exportable, and readable by the assistant.
+
+## Formatting
+
+The toolbar across the top of the editor covers:
+
+- **Text style** — bold, italic, underline, strikethrough, inline code, subscript, superscript
+- **Block type** — normal text, headings 1 to 6, quote, bullet list, numbered list, check list, code block
+- **Appearance** — font family, font size, text colour, background colour
+- **Links** — insert and remove
+- **Layout** — align left, centre, right, justify, and indent or outdent
+- **Undo and redo**
+
+Selecting text also brings up a floating toolbar with the most common formatting, so you rarely need to travel to the top of the window.
+
+## Insert structure
+
+Use the **Insert** menu or type `/` in an empty paragraph to bring up slash commands:
+
+| Insert | Slash command |
+| --- | --- |
+| Headings 1–6 | `/heading` |
+| Bullet, numbered, and check lists | `/list`, `/check` |
+| Quote | `/quote` |
+| Code block | `/code` |
+| Table | `/table` |
+| Image | `/image` |
+| Divider | `/divider` |
+| Page break | `/page` |
+
+Tables insert as a 3×3 grid from the toolbar, and have their own action menu once you are inside one for adding and removing rows and columns.
+
+Code blocks let you choose a language for syntax highlighting.
+
+## Moving blocks
+
+Hover to the left of any block to grab its drag handle and move it up or down the document. It is the fastest way to restructure a draft without cutting and pasting.
+
+## Linking to other documents
+
+Links to other project documents keep working when the target is renamed or moved. Use **Copy path** on a document in the sidebar and paste it into a link, or ask the assistant to link related documents for you.
+
+## Finding your place
+
+- **Find** — `⌘F`
+- **Find and Replace** — `⌘⇧H`
+- **Zoom in**, **Zoom out**, and **Reset zoom** in the toolbar scale the document you are reading without affecting the rest of the interface
+
+To scale the whole interface instead, use **Interface zoom** in **Settings → General**.
+
+## Saving
+
+Figaza saves as you type. There is no save button and no unsaved-changes state to worry about.
+
+Saving is not the same as versioning: your work is always saved, and versions are checkpoints you can return to. See [Versions and history](/projects/versions).
+
+## When the assistant is editing
+
+Changes proposed by the assistant appear inline in the document with a **Pending AI changes** banner. Accept or reject each one individually, or use **Accept all** and **Reject all**.
+
+While a document has pending AI changes you cannot start a version comparison on it — resolve the pending changes first. See [Reviewing AI changes](/ai/reviewing-changes).

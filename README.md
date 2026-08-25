@@ -1,44 +1,50 @@
-# Mintlify Starter Kit
+# Figaza documentation
 
-Use the starter kit to get your docs deployed and ready to customize.
+End-user documentation for Figaza, the product development environment for product managers. Built with [Mintlify](https://mintlify.com).
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+The audience is PMs using the desktop app. Backend configuration, deployment, and API internals are deliberately out of scope — those live in the `spec` repository's `docs/`.
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+## Structure
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
+| Section | Contents |
+| --- | --- |
+| `get-started/` | Install and sign in, quickstart, workspace tour, core concepts |
+| `projects/` | Creating projects, documents, the editor, versions, initiatives |
+| `ai/` | Chat, reviewing AI changes, background agents, credit and models |
+| `plans/` | Workstream plans, progress and history, plan proposals |
+| `derive/` | Derived documents (PRD, elevator pitch) and project briefings |
+| `sources/` | Local files, Notion, Google Drive, integrations, search |
+| `share/` | Export, publish to Drive and Notion, remote sync, conflicts |
+| `skills/` | Built-in skills, authoring skills, MCP servers |
+| `settings/` | Settings reference, plans and billing, privacy, updates |
+
+Each section opens with a quickstart that gets the reader to a real result.
+
+Navigation lives in `docs.json`. Every page must be listed there — an `.mdx` file that is not in the navigation is unreachable.
 
 ## Development
 
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
+Install the [Mintlify CLI](https://www.npmjs.com/package/mint):
 
-```
+```bash
 npm i -g mint
 ```
 
-Run the following command at the root of your documentation, where your `docs.json` is located:
+Then, from the repository root:
 
-```
+```bash
 mint dev
 ```
 
-View your local preview at `http://localhost:3000`.
+View the preview at `http://localhost:3000`.
+
+## Writing conventions
+
+- Second person ("you"), and prerequisites at the start of any procedural page.
+- Every page has `title` and `description` frontmatter.
+- Internal links are site-root paths (`/ai/chat`), never absolute URLs.
+- Document what the product does. Where a claim about behaviour is not verifiable from the app or the `spec` repository, leave it out.
 
 ## Publishing changes
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
-
-## Need help?
-
-### Troubleshooting
-
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
-
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
-- [Mintlify community](https://mintlify.com/community)
+Changes on the default branch are deployed automatically by the Mintlify GitHub app.

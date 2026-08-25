@@ -1,0 +1,50 @@
+---
+title: "Privacy"
+description: "What leaves your machine, what does not, and the two controls you have."
+---
+
+Figaza is a desktop app. Your projects, documents, and history live on your computer, not on a server.
+
+## Where your work lives
+
+| Data | Where it is |
+| --- | --- |
+| Documents and project history | On your machine |
+| Chat sessions and agent transcripts | On your machine |
+| Background tasks and their output | On your machine |
+| Workstream plans and history | On your machine |
+| Credentials for connected services | In your operating system's credential store |
+
+Nothing is uploaded unless you ask for it. [Publishing](/share/publish) sends a document to Drive or Notion; [remote sync](/share/sync) pushes project history to a Git remote you own; [integrations](/sources/integrations) call the services you set them up for. Each is something you set up deliberately.
+
+## What goes to AI providers
+
+Using AI means sending the relevant part of your project to a model provider — that is unavoidable for a feature that reads your documents. What is sent is scoped to what the request needs: the documents the assistant reads, the conversation, and, for a skill, the document context you configured.
+
+Voice input is the exception: speech recognition runs locally on your machine, so your audio is not sent anywhere to be transcribed.
+
+## The two controls
+
+Both are in **Settings → Privacy**.
+
+### Share anonymous usage data
+
+*Helps us improve Figaza by understanding which features are used. No message content, file contents, or personal documents are ever collected.*
+
+This covers which features get used, not what you wrote in them. Turn it off if you would rather send nothing at all.
+
+### Use only Zero Data Retention models
+
+*Limits AI models and routing to endpoints with a zero data retention policy.*
+
+With it on, the model picker only offers models whose providers do not retain the content of requests, and selecting a non-qualifying model is refused rather than quietly allowed.
+
+The trade-off is choice: some capable models do not offer a zero-retention endpoint and will disappear from your picker. If your organisation has a policy about model data retention, this is the setting that enforces it.
+
+## Narrowing what agents can see
+
+Beyond these switches, you control AI access at the level of individual skills. A skill can be limited to specific documents and given read-only tools, so it never sees or touches anything outside its remit. See [Authoring skills](/skills/authoring-skills).
+
+## Deleting things
+
+Deleting a project permanently removes its files and history from your machine. If the project was synced to a Git remote, the remote copy is not deleted — remove that separately at your Git host.

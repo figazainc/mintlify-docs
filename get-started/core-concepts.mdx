@@ -1,0 +1,63 @@
+---
+title: "Core concepts"
+description: "The handful of ideas that explain how Figaza is put together."
+---
+
+Figaza has a small vocabulary. Once these six ideas are clear, the rest of the product follows.
+
+## Project
+
+A project is the unit of everything. Documents, the workstream plan, chat history, background agents, integrations, and skills are all scoped to one project.
+
+Projects live on your computer. Figaza keeps a full version history of every project's documents for you, without you having to think about saving or committing — you never see or touch a version control tool.
+
+You can have as many projects as you like and switch between them from the project menu at the top of the sidebar.
+
+## Document
+
+Documents are the files in your project — mostly Markdown, and you edit them in a rich text editor rather than in raw Markdown.
+
+Two properties matter:
+
+- **Documents keep their identity when you move or rename them.** Links between documents survive reorganisation.
+- **Documents remember where they came from.** A document imported from Notion, Drive, or your filesystem records its origin, and a derived document records the source it was derived from.
+
+## Version
+
+Figaza saves a version of your project as you work: when you have been idle for a while, when you close the app, and before the assistant starts a new round of proposed changes. You can also save one deliberately with **Create version**.
+
+Because versions are captured before AI changes land, you always have a clean point to return to. Open **View history** on any document to compare it with an earlier version and restore what you want. See [Versions and history](/projects/versions).
+
+## Workstream
+
+A workstream is a session of focused work on a project — what you are trying to get done right now, as a short title, a description, and a checklist.
+
+Only one workstream is active per project at a time. When you finish, you end it and it moves to history, where it stays as a record of what that stretch of work covered. See [Workstream plans](/plans/quickstart).
+
+## Agent
+
+An agent is the AI doing work on your behalf. You meet it in three places:
+
+| Where | What it is |
+| --- | --- |
+| Chat | A conversation in the right-hand panel, in **Agent** or **Plan** mode |
+| Background agents | A task that runs on its own while you keep working, listed under **Agents** |
+| Skills | A saved prompt run as a focused subagent, either by you or by the chat agent |
+
+All three read your project through the same set of tools, and every mutating action they take on a document is something you review. See [Working with AI](/ai/quickstart).
+
+## Skill
+
+A skill is a saved prompt with a name and a slash alias, so a task you do repeatedly becomes one command. Skills can take parameters, can be limited to specific documents and specific tools, and can be marked so that agents may call them too.
+
+Figaza ships with built-in skills — company research, project briefing, deriving a PRD or an elevator pitch, exploring a project, and setting up integrations — and you can add your own or override a built-in one. See [Skills](/skills/quickstart).
+
+## How they fit together
+
+A typical week looks like this:
+
+1. Open the project and start a **workstream** for what you are focused on.
+2. Import or connect the **sources** you need.
+3. Work through **documents** in the editor, with the **agent** drafting and you reviewing.
+4. **Derive** the artifacts your audience needs, and publish or export them.
+5. End the workstream — it lands in history with a summary of what changed.

@@ -1,0 +1,77 @@
+---
+title: "Versions and history"
+description: "How Figaza checkpoints your work, and how to compare against and restore an earlier version."
+---
+
+Figaza keeps a full history of every project without asking you to manage it. You never commit anything, and there is no version control tool to learn.
+
+## How versions are created
+
+Your work is saved continuously as you type. On top of that, Figaza captures a **version** — a checkpoint of the whole project — at these moments:
+
+| Trigger | Why |
+| --- | --- |
+| You have been idle for a while and there is unsaved-to-history work | So an interruption leaves a recoverable point |
+| You close the app with outstanding changes | So a session ends cleanly |
+| Before the assistant starts a new round of proposed changes | So there is always a clean point before AI work |
+| You choose **Create version** | So you can mark a moment yourself |
+
+The last one matters most in practice: before a big restructure, or after finishing a section you are happy with, choose **Create version** in the **Status** section at the top of the sidebar.
+
+## Reading the Status section
+
+The top of the sidebar shows the state of the project:
+
+- **What you're working on** — a summary of what has changed since the last version
+- **No changes detected** — everything is checkpointed
+
+## Compare with an earlier version
+
+<Steps>
+  <Step title="Open version history">
+    Right-click a document in the sidebar and choose **View history**, and the **Version History** dialog lists its saved versions with how many lines were added and removed in each.
+  </Step>
+  <Step title="Pick a version">
+    Select one to compare against. The editor switches into comparison mode with a **Comparing with version from …** banner.
+  </Step>
+  <Step title="Decide change by change">
+    Each difference appears inline. Choose **Keep** to stay with the current text or **Restore** to take the older version's text. **Restore all** takes everything from the older version; **Dismiss** exits the comparison and leaves the document as it is.
+  </Step>
+</Steps>
+
+<Note>
+  Version history lists the most recent versions rather than everything ever recorded. When the list is capped, the dialog tells you so at the bottom.
+</Note>
+
+## Things the dialog will tell you
+
+<AccordionGroup>
+  <Accordion title="This document has pending AI changes">
+    Accept or reject the assistant's proposed changes first. Comparing versions on top of an unresolved AI proposal would stack two sets of inline decisions on the same text, so Figaza asks you to finish one before starting the other.
+  </Accordion>
+  <Accordion title="This version matches the current saved document">
+    Nothing differs, so there is nothing to compare. Pick an older version.
+  </Accordion>
+  <Accordion title="No other saved versions differ from the current document">
+    The document has versions, but none of them differ from what is on screen.
+  </Accordion>
+  <Accordion title="Unresolved comparison">
+    You already have a comparison open with decisions still outstanding. Continuing keeps all current changes as they are and starts a new comparison.
+  </Accordion>
+</AccordionGroup>
+
+## What is and is not versioned
+
+Versioned as part of project history:
+
+- Your documents
+- The links between documents, including derived-document relationships
+- Project-scoped skills
+
+Kept on this device but not part of project history:
+
+- Chat sessions and agent transcripts
+- Background tasks and their output
+- Workstream plans
+
+This split is deliberate. Session state changes constantly and is not a meaningful record of the project, so it stays out of your history and out of anything you sync to another device.
