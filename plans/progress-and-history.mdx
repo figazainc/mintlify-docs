@@ -19,7 +19,7 @@ The status line tells you which step is running:
 
 | Status | What is happening |
 | --- | --- |
-| **Checking summary freshness…** | Comparing the existing summary against the project — no AI involved |
+| **Checking summary freshness…** | Working out whether the existing summary is still current |
 | **Updating summary…** | Generating a new summary |
 | **Summary refresh failed.** | The generation did not complete; the previous summary is left in place |
 
@@ -27,7 +27,7 @@ Generation runs as a background task, so nothing blocks while it works.
 
 ### What goes into a summary
 
-Summaries are built from changes to your document content only. Internal bookkeeping is excluded, and internal storage paths are resolved into the document links you recognise — so the summary reads as *what changed in `discovery/interviews.md`*, not as machine paths.
+Summaries are built from changes to your documents, and they link to the documents they are describing — so a summary reads as *what changed in `discovery/interviews.md`*, with the document one click away.
 
 ## Summarising a specific range
 
@@ -60,5 +60,5 @@ If nothing has been ended yet, it reads *No ended workstreams yet.*
 This is the record to open when you come back to a project after a few weeks, or when someone asks what happened last quarter.
 
 <Note>
-  Workstream plans, including history, are stored on this device. They are not part of project history and do not travel with a project you sync to another machine. See [Remote sync](/share/sync).
+  Workstream plans, including history, stay on the computer you made them on. They do not travel with a project you sync to another machine. See [Remote sync](/share/sync).
 </Note>

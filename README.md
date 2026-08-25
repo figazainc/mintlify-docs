@@ -44,7 +44,8 @@ View the preview at `http://localhost:3000`.
 - Second person ("you"), and prerequisites at the start of any procedural page.
 - Every page has `title` and `description` frontmatter.
 - Internal links are site-root paths (`/ai/chat`), never absolute URLs.
-- Document what the product does. Where a claim about behaviour is not verifiable from the app or the `spec` repository, leave it out.
+- Document what the product does. Where a claim about behaviour is not verifiable from the app, leave it out.
+- **Write from the outside in.** These are user-level docs: describe what a PM sees, chooses, and gets. Internal architecture — storage mechanics, agent plumbing, service names, config schemas the user never touches — stays out, even when it explains the behaviour. Where a limit is worth knowing, state the limit, not the reason behind it.
 
 ## Publishing changes
 

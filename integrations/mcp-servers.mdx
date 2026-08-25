@@ -19,7 +19,7 @@ Manage them in **Settings → AI**, under **MCP servers**.
     Paste JSON in either of the two formats below. The editor flags syntax errors — **Fix JSON syntax errors before saving** — before it lets you save.
   </Step>
   <Step title="Save">
-    For local servers, Figaza downloads the runtime it needs on first use. You will see **Downloading dependencies…** and then **Dependencies ready**.
+    For local servers, Figaza fetches what it needs the first time. You will see **Downloading dependencies…** and then **Dependencies ready**.
   </Step>
 </Steps>
 
@@ -81,7 +81,7 @@ With headers:
 ```
 
 <Warning>
-  A token in a `headers` block is stored as part of the server configuration, unlike an [integration credential](/integrations/overview#stored-credentials), which goes to your operating system's keychain. Prefer a server that authenticates through its own flow where one exists, and treat a pasted token as something you will need to rotate by editing the config.
+  A token in a `headers` block is stored as part of the server configuration, not as a [stored credential](/integrations/overview#stored-credentials). Prefer a server that handles its own sign-in where one exists, and remember that rotating a pasted token means editing this config.
 </Warning>
 
 ### Local servers
@@ -106,22 +106,20 @@ A server with a `command` runs as a local process.
 }
 ```
 
-Figaza runs `npx`, `bunx`, `node`, and `bun` commands through a JavaScript runtime it downloads and manages itself, so you do not need Node.js installed to use an npx-style server. Any other command is run as given, so a server installed elsewhere on your machine can be launched by absolute path.
+`npx`-style configs work without you installing anything — Figaza fetches what it needs the first time you use one. Any other command runs as written, so a server already installed on your machine can be launched by its full path.
 
-### What is rejected
+### What is not accepted
 
-The parser is strict on purpose — a config that is nearly right fails loudly instead of half-working.
+A config that is nearly right is rejected rather than half-connected, and the error names the server and the field at fault.
 
-| Config | Why it fails |
+| Config | Why |
 | --- | --- |
 | An `auth` block | Not supported |
-| `command`, `args`, or `env` on a remote entry | Local-process fields on a remote server |
+| `command`, `args`, or `env` on a remote server | Those belong to local servers only |
 | `type: "stdio"` with no `command` | A local server needs something to run |
-| Any field not listed above | Unrecognised fields are rejected rather than ignored |
-| Two servers with the same name | Duplicate names |
-| `headers` or `env` values that are not strings | Wrong type |
-
-The error message names the server and the offending field.
+| Any field not listed above | Unrecognised fields are rejected, not ignored |
+| Two servers with the same name | Names must be unique |
+| `headers` or `env` values that are not text | Both take text values only |
 
 ## Server status
 
@@ -148,7 +146,7 @@ Disabling is the better move when you are diagnosing whether a server is causing
 
 Once a server is connected, its tools join Figaza's own for the assistant to call. The assistant is told which MCP services are configured, and reaches for them when they fit the task.
 
-Tools are namespaced by their server — a `list_issues` tool on a server named `github-cloud` is exposed to the agent as `mcp__github_cloud__list_issues` — so two servers offering similarly named tools do not collide.
+Each tool stays tied to the server it came from, so two servers offering similarly named tools do not conflict.
 
 MCP tool calls appear in the chat transcript like any other tool call, so you can see when an external system was touched.
 

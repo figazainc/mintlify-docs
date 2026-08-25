@@ -8,7 +8,7 @@ Remote sync pushes a project's complete history to a Git repository you own, so 
 You do not need to know Git to use it. You need a repository URL and an access token.
 
 <Note>
-  If **Settings** has no **Sync** tab, remote sync is not enabled in your build of Figaza.
+  If **Settings** has no **Sync** tab, remote sync is not available in your version of Figaza.
 </Note>
 
 ## Prerequisites
@@ -46,17 +46,15 @@ Once a token is stored, the field reads **Access token (stored — enter a new o
 
 On the second machine, use **Import from repo** — from the project menu or the new-project screen — and enter the same remote URL, username, token, and branch. See [Create a project](/projects/create-a-project).
 
-Each device has its own **Device ID**, shown in the Sync panel. It is what lets Figaza tell your machines apart when their changes meet.
+Each computer has its own **Device ID**, shown in the Sync panel. It is how Figaza tells your machines apart, and it is worth noting if you ever need to explain which one made a change.
 
 ## What syncs, and what does not
 
-| Travels with the project | Stays on this device |
+| Travels with the project | Stays on this computer |
 | --- | --- |
-| Your documents and their full history | Chat sessions and agent transcripts |
-| Links between documents, including derived-document links | Background tasks and their output |
-| Project-scoped skills | Workstream plans and their history |
-
-The split is deliberate. Session state changes constantly and is not a meaningful record of the project, so syncing it would mean noise rather than continuity.
+| Your documents and their full history | Chat conversations |
+| Links between documents, including derived-document links | Background agents and their output |
+| Skills saved to the project | Workstream plans and their history |
 
 <Warning>
   Plan your workstreams knowing this: a workstream plan does not follow you to your second machine. Documents do.
