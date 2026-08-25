@@ -1,6 +1,6 @@
 ---
 title: "Reviewing AI changes"
-description: "How proposed edits work, how to accept or reject them, and what YOLO mode changes."
+description: "How proposed edits work, and how to accept or reject them."
 ---
 
 When the assistant changes a document, it proposes the change rather than making it. You decide what lands.
@@ -21,6 +21,8 @@ When the assistant changes a document, it proposes the change rather than making
 
 Nothing is written into the saved document until you accept it. Rejecting leaves the document exactly as it was.
 
+The exception is **YOLO mode** in **Settings → AI**, which accepts every AI change automatically and skips this step — including for background agents and skills you are not watching. Your [version history](/projects/versions) still covers you, but undoing means restoring a version rather than clicking **Reject**.
+
 ## Before every proposal, a clean point
 
 Figaza saves a version of your project before the assistant starts a new round of changes. Whatever you had before the assistant touched anything is recoverable, even after you accept.
@@ -32,18 +34,6 @@ See [Versions and history](/projects/versions).
 The **Status** section at the top of the sidebar summarises what has changed and is not yet checkpointed, under **What you're working on**. When everything is settled it reads **No changes detected**.
 
 If a document has pending AI changes, you cannot start a version comparison on it until you resolve them.
-
-## YOLO mode
-
-**Settings → AI** has a **YOLO mode** toggle: *automatically accept all AI changes without showing diffs for review*.
-
-With it on, the assistant's edits land directly in your documents and you never see the accept and reject controls.
-
-<Warning>
-  YOLO mode removes the review step entirely — including for changes made by background agents and skills, which you are not watching in real time. Your version history is still there, so nothing is unrecoverable, but recovering means finding the version and restoring from it rather than clicking **Reject**.
-
-  It is worth having on when you are iterating fast on a draft you are prepared to throw away. It is worth having off for anything you would be embarrassed to ship.
-</Warning>
 
 ## What the assistant cannot do
 
