@@ -74,6 +74,7 @@
             "group": "Integrations",
             "pages": [
               "integrations/overview",
+              "integrations/publish",
               "integrations/setup-integration",
               "integrations/mcp-servers"
             ]
@@ -82,7 +83,6 @@
             "group": "Sharing and sync",
             "pages": [
               "share/export",
-              "share/publish",
               "share/sync",
               "share/resolving-conflicts"
             ]

@@ -14,8 +14,8 @@ The audience is PMs using the desktop app. Backend configuration, deployment, an
 | `plans/` | Workstream plans, progress and history, plan proposals |
 | `derive/` | Derived documents (PRD, elevator pitch) and project briefings |
 | `sources/` | Local files, Notion, Google Drive, search |
-| `integrations/` | Integrations overview, the /setup-integration skill, MCP servers |
-| `share/` | Export, publish to Drive and Notion, remote sync, conflicts |
+| `integrations/` | Integrations overview, publishing to Drive and Notion, the /setup-integration skill, MCP servers |
+| `share/` | Export, remote sync, resolving conflicts |
 | `skills/` | Built-in skills, authoring skills |
 | `settings/` | Settings reference, plans and billing, privacy, updates |
 
