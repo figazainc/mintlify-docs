@@ -1,0 +1,109 @@
+---
+title: "The /setup-integration skill"
+description: "How the setup assistant researches a service, collects your credential securely, and installs a working pipeline."
+---
+
+`/setup-integration` is the built-in skill that builds an integration for you. You describe what you want in plain language; it does the API research, the credential handling, and the installation.
+
+## Prerequisites
+
+- A project open in Figaza
+- Remaining AI credit
+- Access to the service you want to connect, so you can generate an API key if one is needed
+
+## Running it
+
+Type `/setup-integration` in the chat composer, or just describe what you want and let the assistant reach for it:
+
+```text
+Set up an integration that pulls our open Linear issues into this project every morning.
+```
+
+The skill is written for a non-technical reader. It explains anything technical before it asks you about it, and it replies in whatever language you write in.
+
+## What it does, step by step
+
+<Steps>
+  <Step title="Works out the service and the data">
+    It asks which tool you want to connect and what data you want from it. *Sync open GitHub issues*, *pull the latest Linear tickets*, *import Jira sprint status* are the shape of answer it is looking for.
+
+    Be specific about the slice of data. "Our Linear issues" is workable; "open issues on the Mobile team, updated in the last week" produces a pipeline you will actually use.
+  </Step>
+  <Step title="Researches the API">
+    It reads the service's public API documentation and works out three things: where your data lives, how the service authenticates, and where in that service's settings you go to get a credential.
+  </Step>
+  <Step title="Checks the authentication type">
+    Services that authenticate with an API key or a token can be connected. Services that use a *Sign in with…* authorisation flow cannot, and the skill stops and tells you so rather than failing halfway — see [what is not supported](/integrations/overview#what-is-not-supported).
+  </Step>
+  <Step title="Reuses a credential if you already have one">
+    Before asking you for anything, it checks whether you already have a credential for this service. If you connected Linear for another pipeline, it reuses that token and does not ask again.
+  </Step>
+  <Step title="Collects the credential securely">
+    If it does need one, it tells you exactly where to find it — *Linear → Settings → API → Personal API Keys* — and then opens a secure prompt to collect it.
+
+    <Warning>
+      You will never be asked to paste a key into a chat message. The credential is stored securely on your computer, outside the project and outside the conversation. If anything ever asks you to type a token into the chat, that is not this skill.
+    </Warning>
+  </Step>
+  <Step title="Confirms the schedule">
+    It asks how often you want the data refreshed and reads your answer back to you — *every hour*, *once a day at 9 am UTC*, *manually only* — before setting it.
+
+    Say it in plain words. There is no schedule syntax to learn.
+  </Step>
+  <Step title="Hands off to be installed">
+    With everything gathered, it passes the job to `install-integration`, which does the technical work.
+  </Step>
+</Steps>
+
+## What the installer does
+
+`install-integration` is the second half. You do not run it yourself — it appears in the transcript working through four things:
+
+1. **Tests the connection** before saving anything. If it does not get the data it expects, it adjusts and tries again rather than saving something broken.
+2. **Saves the integration** using exactly the settings that worked.
+3. **Runs it for real**, then reads back a sample of what was stored. A successful test is not treated as proof — the real run has to work too.
+4. **Reports back** with the service, the schedule, and a preview of the data.
+
+Your data is then in the **Sources** panel under the integration's name.
+
+## After it finishes
+
+Check the result before you rely on it:
+
+- Open the fetched file from **Sources** and confirm it is the data you meant.
+- If the slice is wrong — too much, too little, the wrong project — say so in the same conversation. Adjusting query parameters is much quicker than starting over.
+- Use **Run now** in **Settings → Integrations** to confirm a manual refresh works.
+
+See [Integrations overview](/integrations/overview) for pausing, deleting, and managing credentials.
+
+## Who can run what
+
+| Skill | You can run it | Agents can call it |
+| --- | --- | --- |
+| `setup-integration` | Yes | No |
+| `install-integration` | No | Yes |
+
+Setup involves your judgement and your credential, so it stays a conversation you are part of. Installation is mechanical, so it runs on its own.
+
+## Customising it
+
+Like any [built-in skill](/skills/built-in-skills), `/setup-integration` can be customised. **Settings → Skills → Customize** gives you an editable copy that overrides the default.
+
+Worth doing if your organisation always connects the same handful of tools, or has a convention about how integrations should be named and scheduled — put it in the prompt once instead of repeating it every time.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="It says the service needs a pre-built connection">
+    The service uses a *Sign in with…* authorisation flow. Use the built-in [Notion](/sources/notion) or [Google Drive](/sources/google-drive) connections if it is one of those; otherwise it cannot be connected this way today.
+  </Accordion>
+  <Accordion title="Authentication keeps failing">
+    A persistent failure usually means the credential itself is wrong or does not have the necessary permissions. Generate a fresh key in the service, then use **Replace value** on the stored credential in **Settings → Integrations**.
+  </Accordion>
+  <Accordion title="The data came back empty or looks wrong">
+    The connection works but is not returning what you expected — often a missing filter, or the wrong project or team. Tell the assistant what you expected to see and it can adjust and re-test.
+  </Accordion>
+  <Accordion title="It asked for a credential I already provided">
+    Credentials are stored per service. If the assistant named the service differently the second time round, you can end up with two credentials for one tool. Delete the spare in **Settings → Integrations**.
+  </Accordion>
+</AccordionGroup>

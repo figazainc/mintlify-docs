@@ -1,0 +1,85 @@
+---
+title: "Create a project"
+description: "Four ways to start a project: company research, an empty project, an existing folder, or a synced repository."
+---
+
+A project holds your documents, plan, chat history, agents, and integrations. Everything in Figaza is scoped to one.
+
+Open the project menu at the top of the sidebar and choose **New project**, or use **Start a new project** on first run.
+
+## Prerequisites
+
+- Figaza installed and signed in
+- Remaining AI credit, if you want Figaza to research your company for you
+
+## Start with company research
+
+The default path. Figaza researches the company you work for and drafts three foundational documents so the project is not empty on day one.
+
+<Steps>
+  <Step title="Describe the company">
+    Enter a URL, a company name, or a short description. Figaza tells you what it detected — **URL detected**, **Company name detected**, or **Description — we'll do our best**.
+
+    A URL gives the best results, because the research reads the site directly rather than searching for it first.
+  </Step>
+  <Step title="Start research">
+    Choose **Start research**. Figaza searches public sources and reads the company's own pages. This usually takes a minute or two.
+
+    Choose **Minimize** to keep working while it runs — research continues as a background agent, tracked in the **Agents** section of the sidebar.
+  </Step>
+  <Step title="Create the project">
+    When research completes, confirm the **Project name** and choose **Create project**.
+  </Step>
+</Steps>
+
+You get a `company-context/` folder containing `company-overview`, `personas`, and `competitor-analysis`.
+
+<Warning>
+  Research never invents facts. Where public sources came up short, each document ends with a **Follow-up questions for the PM** section listing the gap, and every claim cites the URL it came from. Read those sections before you rely on the documents.
+</Warning>
+
+If research fails or you cancel it, you can **Try again** or fall back to one of the options below.
+
+## Start with an empty project
+
+Choose **Start with an empty project**, name it, and create. You get a clean project with no documents — useful when the material you need is already somewhere else, or when the project is not company-specific.
+
+## Import a folder
+
+Choose **Import a folder** and pick a directory on your computer. Figaza copies the supported files into the project.
+
+Note that this is a copy, not a live link. From that point on, the project's copy is the one you edit, and changes do not flow back to the original folder — so the assistant can never modify files elsewhere on your computer.
+
+Large folders take a moment while files are copied.
+
+You can also import folders and files into an existing project from the **Sources** section — see [Local files](/sources/local-files).
+
+## Import a git repository
+
+Choose **Import a git repository** to clone a project that was already synced to a Git remote from another device, and keep it in sync on this one.
+
+You need:
+
+| Field | What to enter |
+| --- | --- |
+| **Remote URL** | The repository URL, for example `https://github.com/owner/repo.git` |
+| **Project name** | What the project is called on this device |
+| **Username** | Your username with the Git host |
+| **Access token (PAT)** | A personal access token with permission to read the repository |
+| **Branch** | The branch to track |
+
+<Note>
+  This is for projects that Figaza itself synced — see [Remote sync](/share/sync) for how to set that up in the first place. It is not a way to open an arbitrary source-code repository as a project.
+
+  If you do not see this option, remote sync is not available in your version of Figaza.
+</Note>
+
+## Switching and deleting projects
+
+The project menu at the top of the sidebar lists your projects. Select one to switch to it.
+
+To delete a project, open its menu and choose **Delete project**. Deleting permanently removes all of the project's files and its entire history, so Figaza asks you to type the project name to confirm.
+
+<Warning>
+  Deleting a project cannot be undone. If the project is synced to a Git remote, deleting it locally does not delete the remote copy — and vice versa.
+</Warning>

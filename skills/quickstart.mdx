@@ -1,0 +1,76 @@
+---
+title: "Quickstart: create a skill"
+description: "Turn a prompt you keep retyping into a slash command with parameters."
+---
+
+A skill is a saved prompt with a name and a slash alias. Anything you ask the assistant to do repeatedly — a weekly status roll-up, a review against your team's checklist, a standard way of summarising research — becomes one command.
+
+This quickstart takes about five minutes.
+
+## Prerequisites
+
+- A project open in Figaza
+
+## 1. Open the skills settings
+
+Go to **Settings → Skills**. You will see the built-in skills and, once you make some, your own.
+
+## 2. Create a skill
+
+Choose **New skill** and fill in:
+
+| Field | Example |
+| --- | --- |
+| **Name** | `Weekly status` |
+| **Alias** | `weekly-status` — this is what you type after `/` |
+| **Prompt (markdown)** | The instructions the assistant should follow |
+
+Write the prompt the way you would brief a colleague: what to read, what to produce, what to leave out.
+
+## 3. Add a parameter
+
+Skills get useful when they take input. In the prompt, use **Insert** to add a parameter:
+
+- **System parameter** — filled in automatically: **Open document**, **Today's date**, **Current date and time**
+- **Custom parameter** — filled in by whoever runs the skill
+
+For a weekly status, insert a **Multiline** parameter for highlights and a **Date** parameter for the week ending. They appear in the prompt as `{{highlights:multiline}}` and `{{week_ending:date}}`.
+
+## 4. Choose scope
+
+Set **Scope** to decide where the skill is available:
+
+- **All projects** — available everywhere
+- **This project** — only in the current project, and shared with anyone the project syncs to
+- **Just for me** — personal, on this device
+
+## 5. Preview and save
+
+The **Preview** panel shows the prompt with sample values filled in, so you can see what the assistant will actually receive. Fix any parameter syntax errors it flags, then **Save**.
+
+## 6. Run it
+
+In the chat composer, type `/` and pick your skill. Figaza asks for the parameter values, and choosing **Run skill** sends the finished prompt.
+
+## 7. Let agents use it too
+
+If you want the assistant to be able to call the skill on its own during a longer task, turn on **Allow agents to use this skill**. The skill then runs on its own, with only the tools and documents you gave it.
+
+See [Authoring skills](/skills/authoring-skills) for parameters, document scope, and tool access in detail.
+
+## Where to next
+
+<Columns cols={2}>
+  <Card title="Built-in skills" icon="box-archive" href="/skills/built-in-skills">
+    What ships with Figaza, and how to customise it.
+  </Card>
+  <Card title="Authoring skills" icon="pen-ruler" href="/skills/authoring-skills">
+    Parameters, scope, document context, and tool access.
+  </Card>
+  <Card title="MCP servers" icon="server" href="/integrations/mcp-servers">
+    Give agents tools from outside Figaza.
+  </Card>
+  <Card title="Background agents" icon="robot" href="/ai/background-agents">
+    Run longer work without watching it.
+  </Card>
+</Columns>

@@ -1,0 +1,97 @@
+---
+title: "Chat with the assistant"
+description: "Modes, models, attachments, voice, queued messages, and chat history."
+---
+
+The chat panel is scoped to the current project. Everything the assistant knows about your work comes from that project.
+
+## Agent and Plan modes
+
+The mode selector sits next to the composer.
+
+| Mode | What it can do | Use it when |
+| --- | --- | --- |
+| **Agent** | Read the project and change documents, with every change proposed for your review | You want work done |
+| **Plan** | Read the project and propose a workstream plan — it cannot edit documents | You want to think, scope, or sequence |
+
+In **Plan** mode the assistant cannot change your documents at all. It is the safe mode for exploring an idea when you do not want your drafts touched.
+
+## Choosing a model
+
+The model picker offers the models available to your account, grouped by what they are good for:
+
+- **Our recommendation** — a sensible default if you have no strong preference
+- **Largest context** — for reasoning over a lot of material at once
+- **Lower Cost** — for routine work where you want your credit to go further
+- **Strongest general capability** — for hard reasoning
+- **Best for tool use & planning** — for multi-step work across many documents
+
+If your account is limited to zero-data-retention models, the picker only lists models that qualify. See [Privacy](/settings/privacy).
+
+## Pointing the assistant at things
+
+- Type `@` to attach a specific project document to your message.
+- Type `/` to run one of your [skills](/skills/quickstart) — a saved prompt, with any parameters it needs collected before it runs.
+
+## Reading the transcript
+
+The assistant shows its work as it goes:
+
+| Card | Meaning |
+| --- | --- |
+| **Read** | It opened a document |
+| **Explore** / **Exploring project** | It looked around the project structure |
+| **Searched for** / **Search for file** | It searched project content or filenames |
+| **Web search** / **Navigated to** | It searched the web or fetched a page |
+| **Modified** | It proposed a change to a document |
+| **Linked** | It linked a document to your plan |
+| **Plan** | It proposed or updated your workstream plan |
+| **Saved version** | It checkpointed the project |
+| **Background task** | It handed work off to a background agent |
+
+Long turns collapse into an activity summary — *read 4 documents, edited 1 document, called 7 tools* — that you can expand.
+
+When the assistant needs a decision from you, it asks directly in a question card. Pick one of the offered answers, type a custom one, or **Dismiss** the question to let it proceed without your input.
+
+## Queue messages while it works
+
+You do not have to wait for a turn to finish before writing your next instruction. **Add to queue** holds a message until the current turn completes; **Queued messages** lists what is waiting, with **Send now** and **Remove from queue**.
+
+**Stop generation** ends the current turn immediately. If you close a chat tab while the assistant is still working, Figaza asks you to confirm, because closing stops the agent.
+
+## Voice
+
+Choose a voice language, then use **Start voice mode** to talk to the assistant instead of typing. English and Spanish are supported. The first time you use a language, Figaza downloads the speech models for it.
+
+Speech recognition runs on your own machine — your audio is not sent anywhere for transcription.
+
+**Stop voice mode** returns you to typing.
+
+## Chat history
+
+Each project keeps its chats. **Chat history** lists previous conversations with the time of the last message, and marks the ones with unread messages. **New chat** starts a fresh conversation.
+
+Starting a new chat in a project is also what prompts the assistant to consider proposing a workstream plan — see [Plan proposals](/plans/plan-proposals).
+
+## When something goes wrong
+
+<AccordionGroup>
+  <Accordion title="Network or server errors">
+    **There was a network problem reaching the AI service** or **The AI service returned an error** — use **Retry**. These are transient.
+  </Accordion>
+  <Accordion title="Session expired">
+    Sign in again from the user menu. If the app says the session cannot be renewed, sign out fully and sign back in.
+  </Accordion>
+  <Accordion title="AI credit used up">
+    AI features stop entirely rather than falling back to a cheaper model. See [AI credit and models](/ai/credit-and-models).
+  </Accordion>
+  <Accordion title="Selected model is not in the model catalog">
+    The model is no longer offered. Pick another from the picker.
+  </Accordion>
+  <Accordion title="Selected model is not available under Zero Data Retention policy">
+    Your account is restricted to zero-data-retention models and this one does not qualify. Pick a different model, or change the setting in **Settings → Privacy**.
+  </Accordion>
+  <Accordion title="The AI returned an empty response">
+    Retry the message. If it keeps happening on one model, try another.
+  </Accordion>
+</AccordionGroup>

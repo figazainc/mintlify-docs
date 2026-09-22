@@ -1,0 +1,65 @@
+---
+title: "Tour the workspace"
+description: "What each panel in the Figaza window is for, and how to reshape it around the work you are doing."
+---
+
+The Figaza window has three columns: your project on the left, your documents in the middle, and the AI assistant on the right.
+
+## The sidebar
+
+The left sidebar holds everything about the current project. Sections collapse, so you can keep only what you need open.
+
+<AccordionGroup>
+  <Accordion title="Status" icon="circle-check">
+    A summary of work not yet saved into a version: **What you're working on**, or **No changes detected** when everything is saved into a version. **Create version** saves a checkpoint you can return to. See [Versions and history](/projects/versions).
+  </Accordion>
+  <Accordion title="Project files" icon="folder-tree">
+    The file tree for the current project, with the project menu at the top for switching projects, creating a new one, or importing from a folder or repo.
+
+    Right-click a file for **Open**, **Rename**, **Move to…**, **Copy path**, **Make a copy**, **Derived documents**, and **View history**. See [Documents](/projects/documents).
+  </Accordion>
+  <Accordion title="Initiatives" icon="flag">
+    Larger pieces of work you are tracking across documents, each with a state and a risk level. See [Initiatives](/projects/initiatives).
+  </Accordion>
+  <Accordion title="Plan" icon="list-check">
+    The workstream plan for this project: what you are focused on right now, its checklist, and access to plan history. See [Workstream plans](/plans/quickstart).
+  </Accordion>
+  <Accordion title="Sources" icon="plug">
+    Local files, Notion, Google Drive, and any data integrations you have set up. This is where you import material into the project. See [Sources](/sources/quickstart) and [Integrations](/integrations/overview).
+  </Accordion>
+  <Accordion title="Agents" icon="robot">
+    Background tasks running an AI agent on their own, with status, output, and controls to stop or retry. See [Background agents](/ai/background-agents).
+  </Accordion>
+</AccordionGroup>
+
+At the bottom of the sidebar, the user menu holds **Settings**, theme (light, dark, or system), **Language**, **Send feedback**, and **Sign out**.
+
+## The editor
+
+The middle column shows your open documents as tabs.
+
+Each tab has a menu with the actions for that document:
+
+- **Derive...** — generate a PRD or elevator pitch from it
+- **Update derived...** — refresh documents that were previously derived from it
+- **Export as** — PDF, DOCX, PPTX, or a Markdown text file
+- **Share as** — **Copy content** or **Share content**
+- **Publish to Drive** and **Publish to Notion**
+
+The editor itself is a rich text editor with a formatting toolbar, slash commands, tables, images, find and replace, and per-document zoom. See [The editor](/projects/editor).
+
+## The chat panel
+
+The right column is the AI assistant, scoped to the current project. It has two modes — **Agent** and **Plan** — a model picker, a message queue, chat history, and voice input. See [Chat with the assistant](/ai/chat).
+
+When the assistant proposes changes to a document, they appear inline in the editor for you to accept or reject, and a **Pending changes** banner tracks how many are outstanding.
+
+## Search
+
+The search box at the top of the window searches across **Project files**, **Notion**, and **Google Drive** at once, so you can open something without remembering where it lives. See [Search](/sources/search).
+
+## Reshaping the window
+
+- **Toggle left panel** and **Toggle right panel** hide either side to give the editor more room.
+- The layout focus control switches between **Chat focus** and **Content focus**, rebalancing the columns for conversation-heavy or writing-heavy work.
+- **Interface zoom** in **Settings → General** scales the whole interface; the editor toolbar also has its own zoom for the document you are reading.

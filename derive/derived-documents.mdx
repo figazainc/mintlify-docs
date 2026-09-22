@@ -1,0 +1,59 @@
+---
+title: "Derived documents"
+description: "What the PRD and elevator pitch contain, how traceability works, and how to keep derived documents in step with their source."
+---
+
+A derived document is generated from one source document in your project. It records the link back, so the relationship survives after generation.
+
+## What you get
+
+### PRD (Engineers)
+
+| Section | Contents |
+| --- | --- |
+| **Problem Statement** | What problem this addresses, and who is affected |
+| **Goals & Non-Goals** | Explicit goals and non-goals — and a note when non-goals are undefined |
+| **User Stories** | *As a [role], I want [capability], so that [benefit]* |
+| **Functional Requirements** | A numbered list, each traceable back to the source |
+| **Non-Functional Requirements** | Performance, security, scalability, accessibility — with gaps stated |
+| **Technical Considerations** | Architecture, integrations, dependencies, migration |
+| **Open Questions & Missing Information** | What a PRD would normally cover that your source did not |
+
+### Elevator Pitch (C-Level)
+
+As a **Document**:
+
+**One-Liner**, **The Problem**, **The Solution**, **Market Opportunity**, **Business Model**, **The Ask**, and **Missing Information**. Written to be read in under two minutes, in plain business language.
+
+As a **Slide Deck**: the same argument as slides, with sources kept in presenter notes rather than on the slides, and a *Missing Information* slide for the gaps. Slide decks open in the slide viewer, where you can present them, and export as PPTX or PDF.
+
+## Traceability
+
+In documents, every source is linked inline, so any claim can be traced to the document it came from. In slide decks, those references live in the presenter notes to keep the slides clean.
+
+This matters more than it sounds. A PRD nobody can audit gets argued about; one where every requirement points at the brief it came from gets reviewed.
+
+## Where derived documents are saved
+
+In the same folder as the source, named with the date and time of generation. Generating again produces a new document rather than overwriting the previous one, so you keep the older version of the artifact.
+
+## Finding the relationship again
+
+- On the source: right-click it in the sidebar and choose **Derived documents**.
+- On the derived document: the link back to the source is in the document itself.
+
+## Updating after the source changes
+
+Choose **Update derived...** from the source document's tab menu.
+
+An update is not a regeneration. Figaza works out what changed in the source and updates only the sections affected by it, preserving the structure and everything untouched — including edits you made to the derived document yourself.
+
+<Tip>
+  Update from the source document's tab, rather than by asking the assistant to update the derived file directly. Running it from the source is what gives the update the record of what actually changed; asking for it another way makes the assistant infer the difference, and the result is usually less precise.
+</Tip>
+
+## Rules that always hold
+
+- The file is always written, even when the source is thin — with the gaps flagged.
+- Facts are never invented to fill a section.
+- Missing information is listed explicitly rather than smoothed over.

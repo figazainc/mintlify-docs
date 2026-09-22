@@ -1,0 +1,49 @@
+---
+title: "AI credit and models"
+description: "What consumes credit, what happens when it runs out, and how model choice affects both."
+---
+
+Every AI action in Figaza spends credit against your account: chat turns, background agents, skills, derived documents, and project briefings.
+
+## How much credit you have
+
+| Your situation | Allowance | Resets |
+| --- | --- | --- |
+| Personal account, no subscription, with a free-tier grant | The grant — by default $5 | Never: it is one-time |
+| Personal account, no subscription, no grant | None | — |
+| Subscribed individually, or through your company | A share of your plan | Monthly |
+| Subscription lapsed | None | — |
+
+The free-tier grant is issued once per account, ever. It is a trial, not a recurring allowance — spend accumulates against it and it does not refill. An account that has held a subscription is not granted one again after cancelling.
+
+If your company holds the subscription, your membership entitles you and there is nothing for you to buy.
+
+## When credit runs out
+
+AI features stop. Figaza shows **AI credit used up**, and chat, background agents, skills, and derived documents are all unavailable until you subscribe or your monthly allowance resets.
+
+There is deliberately no fallback to a cheaper model. Quietly downgrading you mid-project would change the quality of your work without telling you.
+
+To continue, open **Settings → Account** and subscribe or manage your existing subscription. See [Plans and billing](/settings/plans-and-billing).
+
+## Choosing a model
+
+The model picker groups the available models by what they are for:
+
+| Group | Pick it when |
+| --- | --- |
+| **Our recommendation** | You have no strong preference |
+| **Largest context** | The task spans a lot of material at once |
+| **Lower Cost** | The work is routine and you want your credit to stretch |
+| **Strongest general capability** | The reasoning is genuinely hard |
+| **Best for tool use & planning** | The work is multi-step across many documents |
+
+Model choice is the main lever you have over how fast your credit is spent. Drafting, summarising, and reformatting rarely need the most expensive model; multi-document analysis and long agentic runs often do.
+
+Some features let you pick the model for that run specifically — deriving documents and generating a project briefing both offer a **Model** selector in their dialog.
+
+## Zero data retention
+
+**Settings → Privacy** has **Use only Zero Data Retention models**, which limits models and routing to endpoints that operate under a zero-data-retention policy.
+
+With it on, the model picker only lists models that qualify, and selecting a non-qualifying model is refused rather than silently allowed. It narrows your choices — that is the trade-off for the guarantee. See [Privacy](/settings/privacy).
